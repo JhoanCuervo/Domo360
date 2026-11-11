@@ -1,9 +1,12 @@
 import { useState, type FormEvent } from "react";
+import { useNavigate } from "react-router";
 
 import Domo360Logo from "../../components/Brand/Domo360Logo";
 import Button from "../../components/Button/Button";
 import Field from "../../components/Field/Field";
 import api from "../../service/api";
+import { useSessionStore } from "../../store/sessionStore";
+import type { userResponse } from "../../types/session";
 import "./Login.css";
 
 const MIN_DIGITS = 6;
@@ -30,6 +33,8 @@ const CedulaIcon = () => (
 );
 
 const Login = () => {
+  const navigate = useNavigate();
+  const setUser = useSessionStore((state) => state.setUser);
   const [digits, setDigits] = useState("");
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -57,8 +62,24 @@ const Login = () => {
 
     setSubmitting(true);
 
-    const user = await api("Auth", { idAuth: digits });
-    console.log("🚀 ~ handleSubmit ~ user:", user);
+    const user = await api<userResponse>("Auth", { idAuth: digits });
+    if (!user) {
+      setError("Usuario no encontrado.");
+      setSubmitting(false);
+      return;
+    }
+
+    const userSave = { id: parseInt(digits), ...user };
+    setUser(userSave);
+
+    setSubmitting(false);
+
+    if (user.rol === "Admin") {
+      navigate("/admin");
+    }
+    if (user.rol === "User") {
+      navigate("/user");
+    }
   };
 
   return (

@@ -1,0 +1,120 @@
+/* ==========================================================================
+   Layout de administración
+   ========================================================================== */
+.admin-screen {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: var(--domo-slate-50);
+}
+
+.admin-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4.5rem;
+  padding: 0 2rem;
+  border-bottom: 1px solid var(--domo-slate-200);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.admin-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  background-color: #eef2ff;
+  color: var(--domo-indigo-600);
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.admin-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-user {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.admin-user-avatar {
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--domo-indigo-600), #8b5cf6);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.admin-user-info {
+  display: grid;
+  min-width: 0;
+}
+
+.admin-user-name {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--domo-slate-900);
+}
+
+.admin-user-role {
+  font-size: 0.75rem;
+  color: var(--domo-slate-400);
+}
+
+.admin-logout {
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--domo-radius);
+  color: var(--domo-slate-500);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.admin-logout:hover {
+  background-color: var(--domo-slate-50);
+  color: var(--domo-red-600);
+}
+
+.admin-content {
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* ==========================================================================
+   Pantallas pequeñas
+   ========================================================================== */
+@media (max-width: 767.98px) {
+  .admin-topbar {
+    padding: 0 1rem;
+  }
+
+  .admin-user-info {
+    display: none;
+  }
+
+  .admin-content {
+    padding: 1.5rem 1rem;
+  }
+}
