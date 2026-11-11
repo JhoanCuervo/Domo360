@@ -1,6 +1,9 @@
 import { useState, type FormEvent } from "react";
 import { useNavigate } from "react-router";
 
+import { CheckStroke, User4Outlined } from "@lineiconshq/free-icons";
+import { Lineicons } from "@lineiconshq/react-lineicons";
+
 import Domo360Logo from "../../components/Brand/Domo360Logo";
 import Button from "../../components/Button/Button";
 import Field from "../../components/Field/Field";
@@ -15,22 +18,6 @@ const MAX_DIGITS = 10;
 /** Agrupa los dígitos de la cédula en miles: 1234567 -> 1.234.567 */
 const formatCedula = (digits: string) =>
   digits.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-
-const CedulaIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    width="20"
-    height="20"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <rect x="2.5" y="5" width="19" height="14" rx="2.5" />
-    <path d="M2.5 10h19" />
-  </svg>
-);
 
 const Login = () => {
   const navigate = useNavigate();
@@ -96,17 +83,12 @@ const Login = () => {
           {session ? (
             <div className="login-success">
               <div className="login-success-icon">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                <Lineicons
+                  icon={CheckStroke}
+                  size={24}
+                  strokeWidth={2.5}
                   aria-hidden
-                >
-                  <path d="M20 6 9 17l-5-5" />
-                </svg>
+                />
               </div>
               <h1 className="login-success-title">Ingreso exitoso</h1>
               <p className="login-success-text">
@@ -141,7 +123,7 @@ const Login = () => {
                   inputMode="numeric"
                   autoFocus
                   placeholder="1.234.567.890"
-                  icon={<CedulaIcon />}
+                  icon={<Lineicons icon={User4Outlined} size={20} />}
                   counter={`${digits.length}/${MAX_DIGITS}`}
                   error={error}
                   value={formatCedula(digits)}

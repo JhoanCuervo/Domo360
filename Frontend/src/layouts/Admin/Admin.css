@@ -1,0 +1,40 @@
+/* ==========================================================================
+   Layout de administración
+   ========================================================================== */
+.admin-screen {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: var(--domo-slate-50);
+}
+
+/* ==========================================================================
+   Cuerpo: menú lateral + contenido
+   ========================================================================== */
+.admin-body {
+  display: flex;
+  flex: 1;
+  align-items: stretch;
+}
+
+.admin-content {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* ==========================================================================
+   Pantallas pequeñas
+   ========================================================================== */
+@media (max-width: 767.98px) {
+  .admin-body {
+    flex-direction: column;
+  }
+
+  .admin-content {
+    padding: 1.5rem 1rem;
+  }
+}

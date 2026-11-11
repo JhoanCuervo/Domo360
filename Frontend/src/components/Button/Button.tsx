@@ -1,3 +1,6 @@
+import { Spinner3Outlined } from "@lineiconshq/free-icons";
+import { Lineicons } from "@lineiconshq/react-lineicons";
+
 import type { ButtonProps, ButtonVariant } from "./Button.types";
 
 const VARIANTS: Record<ButtonVariant, string> = {
@@ -26,22 +29,12 @@ const Button = ({
     {...buttonProps}
   >
     {loading && (
-      <svg viewBox="0 0 24 24" className="btn-spinner" fill="none" aria-hidden>
-        <circle
-          cx="12"
-          cy="12"
-          r="9"
-          stroke="currentColor"
-          strokeWidth="3"
-          strokeOpacity="0.3"
-        />
-        <path
-          d="M21 12a9 9 0 0 0-9-9"
-          stroke="currentColor"
-          strokeWidth="3"
-          strokeLinecap="round"
-        />
-      </svg>
+      <Lineicons
+        icon={Spinner3Outlined}
+        size={16}
+        className="btn-spinner"
+        aria-hidden
+      />
     )}
     {children}
   </button>

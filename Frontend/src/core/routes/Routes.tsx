@@ -1,7 +1,7 @@
 import type { RouteObject } from "react-router";
 
-import AdminLayout from "../../layouts/AdminLayout/AdminLayout";
-import Admin from "../../pages/Admin/Index";
+import Admin from "../../layouts/Admin/Admin";
+import AdminPage from "../../pages/Admin/Index";
 import Login from "../../pages/Login/Index";
 import User from "../../pages/User/Index";
 
@@ -11,9 +11,9 @@ const Routes: RouteObject[] = [
   {
     path: "/admin",
     element: (
-      <AdminLayout>
-        <Admin />
-      </AdminLayout>
+      <Admin>
+        <AdminPage />
+      </Admin>
     ),
   },
   { path: "/user", element: <User /> },

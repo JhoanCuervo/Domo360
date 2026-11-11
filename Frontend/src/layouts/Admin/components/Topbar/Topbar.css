@@ -1,13 +1,6 @@
 /* ==========================================================================
-   Layout de administración
+   Barra superior de administración
    ========================================================================== */
-.admin-screen {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  background-color: var(--domo-slate-50);
-}
-
 .admin-topbar {
   position: sticky;
   top: 0;
@@ -95,13 +88,6 @@
   color: var(--domo-red-600);
 }
 
-.admin-content {
-  width: 100%;
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
 /* ==========================================================================
    Pantallas pequeñas
    ========================================================================== */
@@ -112,9 +98,5 @@
 
   .admin-user-info {
     display: none;
-  }
-
-  .admin-content {
-    padding: 1.5rem 1rem;
   }
 }
