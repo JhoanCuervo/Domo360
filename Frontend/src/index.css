@@ -1,0 +1,254 @@
+﻿@import "bootstrap/dist/css/bootstrap.min.css";
+
+@font-face {
+  font-family: "Nunito Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 1000;
+  src: url("@fontsource-variable/nunito/files/nunito-latin-wght-normal.woff2")
+    format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ==========================================================================
+   Tokens de marca (equivalentes a la paleta usada antes con Tailwind)
+   ========================================================================== */
+:root {
+  --domo-slate-50: #f8fafc;
+  --domo-slate-200: #e2e8f0;
+  --domo-slate-300: #cbd5e1;
+  --domo-slate-400: #94a3b8;
+  --domo-slate-500: #64748b;
+  --domo-slate-700: #334155;
+  --domo-slate-900: #0f172a;
+  --domo-indigo-400: #818cf8;
+  --domo-indigo-500: #6366f1;
+  --domo-indigo-600: #4f46e5;
+  --domo-indigo-700: #4338ca;
+  --domo-red-300: #fca5a5;
+  --domo-red-500: #ef4444;
+  --domo-red-600: #dc2626;
+  --domo-emerald-50: #ecfdf5;
+  --domo-emerald-600: #059669;
+  --domo-radius: 0.75rem;
+  --domo-font-sans: "Nunito Variable", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* Fuente global: tambiÃ©n pisa la familia por defecto de Bootstrap. */
+  --bs-font-sans-serif: var(--domo-font-sans);
+  --bs-body-font-family: var(--domo-font-sans);
+}
+
+html,
+body {
+  font-family: var(--domo-font-sans);
+}
+
+/* Refuerzo para controles de formulario y botones (Bootstrap los resetea). */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+}
+
+body {
+  font-family: var(--domo-font-sans);
+  background-color: var(--domo-slate-50);
+  color: var(--domo-slate-900);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   Logotipo Domo360
+   ========================================================================== */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-wordmark {
+  font-family: var(--domo-font-sans);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--domo-slate-900);
+  line-height: 1;
+}
+
+.brand-wordmark-accent {
+  color: var(--domo-indigo-600);
+}
+
+/* ==========================================================================
+   Campo de formulario
+   ========================================================================== */
+.field-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.375rem;
+}
+
+.field-label {
+  margin-bottom: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--domo-slate-700);
+}
+
+.field-counter {
+  font-size: 0.75rem;
+  color: var(--domo-slate-400);
+  font-variant-numeric: tabular-nums;
+}
+
+.field-control {
+  position: relative;
+}
+
+.field-icon {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  display: grid;
+  width: 2.75rem;
+  place-items: center;
+  color: var(--domo-slate-400);
+  pointer-events: none;
+}
+
+.form-control.field-input {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--domo-slate-300);
+  border-radius: var(--domo-radius);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  color: var(--domo-slate-900);
+  font-variant-numeric: tabular-nums;
+  background-color: #ffffff;
+}
+
+.form-control.field-input.field-input-icon {
+  padding-left: 2.75rem;
+}
+
+.form-control.field-input::placeholder {
+  font-weight: 400;
+  letter-spacing: normal;
+  color: var(--domo-slate-400);
+}
+
+.form-control.field-input:focus {
+  border-color: var(--domo-indigo-500);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25);
+  background-color: #ffffff;
+}
+
+.form-control.field-input.field-input-error {
+  border-color: var(--domo-red-300);
+}
+
+.form-control.field-input.field-input-error:focus {
+  border-color: var(--domo-red-300);
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3);
+}
+
+/* Anula el fondo amarillo/blanco que Chrome y Safari aplican al autocompletar. */
+.form-control.field-input:-webkit-autofill,
+.form-control.field-input:-webkit-autofill:hover,
+.form-control.field-input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--domo-slate-900);
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+  caret-color: var(--domo-slate-900);
+  transition: background-color 9999s ease-out 0s;
+}
+
+.field-error {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--domo-red-600);
+}
+
+/* ==========================================================================
+   Botones
+   ========================================================================== */
+.btn-brand,
+.btn-brand-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--domo-radius);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.5;
+  transition: background-color 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.btn-brand {
+  color: #ffffff;
+  background-color: var(--domo-indigo-600);
+  border: 1px solid var(--domo-indigo-600);
+  box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.25),
+    0 4px 6px -4px rgba(79, 70, 229, 0.25);
+}
+
+.btn-brand:hover,
+.btn-brand:first-child:active {
+  color: #ffffff;
+  background-color: var(--domo-indigo-700);
+  border-color: var(--domo-indigo-700);
+}
+
+.btn-brand-outline {
+  color: var(--domo-slate-700);
+  background-color: #ffffff;
+  border: 1px solid var(--domo-slate-200);
+}
+
+.btn-brand-outline:hover,
+.btn-brand-outline:first-child:active {
+  color: var(--domo-slate-700);
+  background-color: var(--domo-slate-50);
+  border-color: var(--domo-slate-200);
+}
+
+.btn-brand:focus-visible,
+.btn-brand-outline:focus-visible {
+  outline: 2px solid var(--domo-indigo-600);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+.btn-brand:disabled,
+.btn-brand-outline:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.btn-spinner {
+  width: 1rem;
+  height: 1rem;
+  animation: domo-spin 0.8s linear infinite;
+}
+
+@keyframes domo-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-spinner {
+    animation-duration: 2.4s;
+  }
+}

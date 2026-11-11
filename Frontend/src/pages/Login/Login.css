@@ -1,0 +1,129 @@
+/* ==========================================================================
+   Pantalla de login (solo estilos de la página)
+   ========================================================================== */
+.login-screen {
+  position: relative;
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  overflow: hidden;
+  padding: 2.5rem 1rem;
+  background-color: var(--domo-slate-50);
+}
+
+.login-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    60% 50% at 50% 0%,
+    #e0e7ff 0%,
+    transparent 70%
+  );
+}
+
+.login-blob {
+  position: absolute;
+  top: -8rem;
+  left: 50%;
+  width: 24rem;
+  height: 24rem;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background-color: rgba(129, 140, 248, 0.2);
+  filter: blur(64px);
+  pointer-events: none;
+}
+
+.login-shell {
+  position: relative;
+  width: 100%;
+  max-width: 24rem;
+}
+
+.login-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.login-card {
+  padding: 1.75rem;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.05),
+    0 8px 10px -6px rgba(15, 23, 42, 0.05);
+  backdrop-filter: blur(8px);
+}
+
+.login-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.login-title {
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--domo-slate-900);
+}
+
+.login-subtitle {
+  margin-top: 0.375rem;
+  margin-bottom: 0;
+  font-size: 0.875rem;
+  color: var(--domo-slate-500);
+}
+
+.login-submit {
+  margin-top: 1.5rem;
+}
+
+.login-footer {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--domo-slate-400);
+}
+
+.login-success {
+  text-align: center;
+}
+
+.login-success-icon {
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto 1rem;
+  place-items: center;
+  border-radius: 50%;
+  background-color: var(--domo-emerald-50);
+  color: var(--domo-emerald-600);
+}
+
+.login-success-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.login-success-title {
+  margin-bottom: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--domo-slate-900);
+}
+
+.login-success-text {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  font-size: 0.875rem;
+  color: var(--domo-slate-500);
+}
+
+.login-success-cedula {
+  font-weight: 600;
+  color: var(--domo-slate-700);
+}

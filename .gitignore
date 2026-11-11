@@ -1,0 +1,41 @@
+# Dependencias
+node_modules/
+
+# Build / artefactos generados
+dist/
+build/
+.vite/
+*.tsbuildinfo
+
+# Backend de Apps Script (fuera del control de versiones)
+Server/
+
+# Variables de entorno (nunca subir secretos)
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# Credenciales de clasp (las de la máquina, no del proyecto)
+.clasprc.json
+.clasprc.json.*
+
+# Editores
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporales
+*.tmp
+*.bak
