@@ -1,0 +1,13 @@
+{
+  "name": "domo360",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Domo360 — frontend React + backend Google Apps Script",
+  "scripts": {
+    "build:backend": "npm --prefix Backend run build",
+    "build:frontend": "npm --prefix Frontend run build",
+    "build": "npm run build:backend && npm run build:frontend",
+    "push": "npm run build && cd Server && clasp push",
+    "pull": "cd Server && clasp pull"
+  }
+}

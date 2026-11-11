@@ -3,6 +3,7 @@ import { useState, type FormEvent } from "react";
 import Domo360Logo from "../../components/Brand/Domo360Logo";
 import Button from "../../components/Button/Button";
 import Field from "../../components/Field/Field";
+import api from "../../service/api";
 import "./Login.css";
 
 const MIN_DIGITS = 6;
@@ -56,7 +57,8 @@ const Login = () => {
 
     setSubmitting(true);
 
-    // const { rows } = await api("records.list", { sheet: "Productos" });
+    const user = await api("Auth", { idAuth: digits });
+    console.log("🚀 ~ handleSubmit ~ user:", user);
   };
 
   return (
