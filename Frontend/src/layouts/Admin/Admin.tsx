@@ -16,7 +16,9 @@ const Admin = ({ children }: Props) => (
     <div className="admin-body">
       <Menu />
 
-      <main className="admin-content">{children}</main>
+      <main className="admin-content">
+        <div className="admin-content-panel">{children}</div>
+      </main>
     </div>
   </div>
 );
