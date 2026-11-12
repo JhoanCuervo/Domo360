@@ -1,5 +1,4 @@
-import { Spinner3Outlined } from "@lineiconshq/free-icons";
-import { Lineicons } from "@lineiconshq/react-lineicons";
+import { LuLoaderCircle } from "react-icons/lu";
 
 import type { ButtonProps, ButtonVariant } from "./Button.types";
 
@@ -29,12 +28,7 @@ const Button = ({
     {...buttonProps}
   >
     {loading && (
-      <Lineicons
-        icon={Spinner3Outlined}
-        size={16}
-        className="btn-spinner"
-        aria-hidden
-      />
+      <LuLoaderCircle size={16} className="btn-spinner" aria-hidden />
     )}
     {children}
   </button>

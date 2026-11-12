@@ -1,16 +1,16 @@
-import { FileMultipleStroke, Home2Stroke } from "@lineiconshq/free-icons";
+import { LuFiles, LuHouse } from "react-icons/lu";
 import type { MenuItem } from "./Meny.types";
 
 const MENU_ITEMS: MenuItem[] = [
   {
     label: "Inicio",
     to: "/admin",
-    icon: Home2Stroke,
+    icon: LuHouse,
   },
   {
     label: "Contratos",
     to: "/admin/contracts",
-    icon: FileMultipleStroke,
+    icon: LuFiles,
   },
 ];
 

@@ -1,8 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { useNavigate } from "react-router";
 
-import { CheckStroke, User4Outlined } from "@lineiconshq/free-icons";
-import { Lineicons } from "@lineiconshq/react-lineicons";
+import { LuCheck, LuUserRound } from "react-icons/lu";
 
 import Domo360Logo from "../../components/Brand/Domo360Logo";
 import Button from "../../components/Button/Button";
@@ -83,12 +82,7 @@ const Login = () => {
           {session ? (
             <div className="login-success">
               <div className="login-success-icon">
-                <Lineicons
-                  icon={CheckStroke}
-                  size={24}
-                  strokeWidth={2.5}
-                  aria-hidden
-                />
+                <LuCheck size={24} strokeWidth={2.5} aria-hidden />
               </div>
               <h1 className="login-success-title">Ingreso exitoso</h1>
               <p className="login-success-text">
@@ -123,7 +117,7 @@ const Login = () => {
                   inputMode="numeric"
                   autoFocus
                   placeholder="1.234.567.890"
-                  icon={<Lineicons icon={User4Outlined} size={20} />}
+                  icon={<LuUserRound size={20} />}
                   counter={`${digits.length}/${MAX_DIGITS}`}
                   error={error}
                   value={formatCedula(digits)}

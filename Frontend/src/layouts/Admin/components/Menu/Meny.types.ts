@@ -1,7 +1,7 @@
-import type { LineiconsProps } from "@lineiconshq/react-lineicons";
+import type { IconType } from "react-icons";
 
 export type MenuItem = {
   label: string;
   to: string;
-  icon: LineiconsProps["icon"];
+  icon: IconType;
 };
