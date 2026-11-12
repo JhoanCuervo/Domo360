@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { LuHouse, LuSearch } from "react-icons/lu";
 
+import Field from "../../../components/Field/Field";
 import api from "../../../service/api";
 import type { AllApartments } from "../../../types/apartment";
 import HomeFeedback from "./HomeFeedback";
@@ -58,11 +60,38 @@ const useApartments = () => {
 /** Pantalla de inicio del área de administración. */
 const Home = () => {
   const { apartments, loading, error, reload } = useApartments();
+  const [search, setSearch] = useState("");
 
   const total = apartments.length;
 
   return (
     <section className="home-section" aria-busy={loading}>
+      <header className="home-header">
+        <div className="home-header-main">
+          <span className="home-header-icon" aria-hidden="true">
+            <LuHouse />
+          </span>
+          <div className="home-header-content">
+            <h1 className="home-header-title">Propiedades</h1>
+            <p className="home-header-subtitle">
+              Gestiona y visualiza los inmuebles de tu portafolio.
+            </p>
+          </div>
+        </div>
+
+        <div className="home-header-search">
+          <Field
+            label="Buscar apartamento"
+            name="search"
+            type="search"
+            placeholder="Buscar apartamento..."
+            icon={<LuSearch size={18} aria-hidden />}
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+          />
+        </div>
+      </header>
+
       {loading ? (
         <div className="row g-4">
           {Array.from({ length: 3 }, (_, index) => (
