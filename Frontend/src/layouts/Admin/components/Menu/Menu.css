@@ -3,17 +3,25 @@
    ========================================================================== */
 .admin-sidebar {
   position: sticky;
-  top: 4.5rem;
+  top: 0;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
   gap: 0.5rem;
   width: 16rem;
-  height: calc(100vh - 4.5rem);
+  height: 100vh;
   padding: 1.5rem 1rem;
   border-right: 1px solid var(--domo-slate-200);
   background-color: #ffffff;
   overflow-y: auto;
+}
+
+.admin-sidebar-brand {
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--domo-slate-200);
 }
 
 .admin-nav-title {
@@ -79,6 +87,12 @@
     border-right: 0;
     border-bottom: 1px solid var(--domo-slate-200);
     overflow-x: auto;
+  }
+
+  .admin-sidebar-brand {
+    padding: 0;
+    margin: 0;
+    border-bottom: 0;
   }
 
   .admin-nav-title {

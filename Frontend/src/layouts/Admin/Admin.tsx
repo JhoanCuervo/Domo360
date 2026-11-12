@@ -1,25 +1,25 @@
 import type { ReactNode } from "react";
 
 import Menu from "./components/Menu/Menu";
-import Topbar from "./components/Topbar/Topbar";
+import UserMenu from "./components/UserMenu/UserMenu";
 import "./Admin.css";
 
 type Props = {
   children: ReactNode;
 };
 
-/** Layout exclusivo del área de administración: barra superior + menú lateral + contenido. */
+/** Layout exclusivo del área de administración: menú lateral + contenido. */
 const Admin = ({ children }: Props) => (
   <div className="admin-screen">
-    <Topbar />
+    <Menu />
 
-    <div className="admin-body">
-      <Menu />
+    <main className="admin-content">
+      <div className="admin-content-top">
+        <UserMenu />
+      </div>
 
-      <main className="admin-content">
-        <div className="admin-content-panel">{children}</div>
-      </main>
-    </div>
+      <div className="admin-content-panel">{children}</div>
+    </main>
   </div>
 );
 

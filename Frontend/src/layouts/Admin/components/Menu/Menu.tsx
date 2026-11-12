@@ -3,10 +3,15 @@ import { NavLink } from "react-router";
 import "./Menu.css";
 import MENU_ITEMS from "./Menu.data";
 import Lineicons from "@lineiconshq/react-lineicons";
+import Domo360Logo from "../../../../components/Brand/Domo360Logo";
 
 /** Menú lateral del área de administración. */
 const Menu = () => (
   <aside className="admin-sidebar">
+    <div className="admin-sidebar-brand">
+      <Domo360Logo size={32} />
+    </div>
+
     <p className="admin-nav-title">Menú</p>
     <nav className="admin-nav" aria-label="Menú de administración">
       {MENU_ITEMS.map((item) => (
