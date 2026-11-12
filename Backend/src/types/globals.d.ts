@@ -5,6 +5,7 @@ declare global {
   var global: typeof globalThis & {
     doGet: typeof import("../model/doGet").default;
     Auth: typeof import("../controller/Auth").Auth;
+    Home: typeof import("../controller/Home").Auth;
   };
 
   // ORMN está disponible globalmente en el entorno de Apps Script.

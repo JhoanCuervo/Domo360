@@ -1,8 +1,8 @@
 import type { RouteObject } from "react-router";
 
 import Admin from "../../layouts/Admin/Admin";
-import AdminPage from "../../pages/Admin/Index";
 import ContractsPage from "../../pages/Admin/Contracts/Index";
+import AdminPage from "../../pages/Admin/Home/Index";
 import Login from "../../pages/Login/Index";
 import User from "../../pages/User/Index";
 

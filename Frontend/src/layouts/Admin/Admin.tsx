@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 
+import "./Admin.css";
 import Menu from "./components/Menu/Menu";
 import UserMenu from "./components/UserMenu/UserMenu";
-import "./Admin.css";
 
 type Props = {
   children: ReactNode;
@@ -18,7 +18,7 @@ const Admin = ({ children }: Props) => (
         <UserMenu />
       </div>
 
-      <div className="admin-content-panel">{children}</div>
+      <div>{children}</div>
     </main>
   </div>
 );

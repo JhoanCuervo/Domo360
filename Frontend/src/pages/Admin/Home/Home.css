@@ -1,0 +1,38 @@
+/* ==========================================================================
+   Tarjetas de inmuebles del inicio
+   ========================================================================== */
+.property-card {
+  overflow: hidden;
+  padding: 0.3rem;
+  border: 1px solid var(--domo-slate-200);
+  border-radius: var(--domo-radius);
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+/* La imagen queda inset dentro de la card, con su propio borde del mismo
+   grosor y color que el de la tarjeta. */
+.property-card-img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border: 1px solid var(--domo-slate-200);
+  border-radius: calc(var(--domo-radius) - 0.25rem);
+}
+
+.property-card-body {
+  padding: 1rem 0.25rem 0.25rem;
+}
+
+.property-card-title {
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--domo-slate-900);
+}
+
+.property-card-address {
+  margin-bottom: 0;
+  font-size: 0.875rem;
+  color: var(--domo-slate-500);
+}

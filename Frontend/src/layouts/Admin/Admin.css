@@ -16,7 +16,6 @@
   flex-direction: column;
   min-width: 0;
   width: 100%;
-  max-width: 72rem;
   margin: 0 auto;
   padding: 2rem;
 }

@@ -4,3 +4,6 @@ global.doGet = doGet;
 
 import { Auth } from "./controller/Auth";
 global.Auth = Auth;
+
+import { Home } from "./controller/Home";
+global.Home = Home;
