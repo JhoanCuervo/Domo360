@@ -1,0 +1,9 @@
+/* ==========================================================================
+   Pestaña Arrendatario: lista de datos en cuadrícula (display y márgenes
+   con utilidades de Bootstrap; solo se conserva la cuadrícula propia).
+   ========================================================================== */
+
+.apartment-tabs-list {
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1rem 1.5rem;
+}

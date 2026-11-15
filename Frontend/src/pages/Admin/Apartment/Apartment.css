@@ -1,0 +1,263 @@
+/* ==========================================================================
+   Detalle de apartamento: solo estilos propios; el layout, forma y
+   espaciado vienen de utilidades de Bootstrap en los componentes.
+   ========================================================================== */
+
+/* Enlace de texto con el icono dentro de un contenedor redondeado. */
+.apartment-back {
+  color: var(--domo-purple-600);
+  transition: color 0.15s ease;
+}
+
+.apartment-back-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  place-items: center;
+  background-color: var(--domo-purple-100);
+  color: var(--domo-purple-600);
+  transition: background-color 0.15s ease;
+}
+
+.apartment-back:hover {
+  color: var(--domo-purple-700);
+}
+
+.apartment-back:hover .apartment-back-icon {
+  background-color: var(--domo-purple-200);
+}
+
+.apartment-back:focus-visible {
+  outline: 2px solid var(--domo-purple-600);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Ficha del apartamento: imagen a la izquierda, información al centro
+   y datos del contrato a la derecha
+   ========================================================================== */
+.apartment-card {
+  /* La imagen tiene un ancho fijo: no se reduce al estrechar la ventana. */
+  grid-template-columns: 12rem minmax(0, 1fr) auto;
+  box-shadow:
+    0 4px 12px rgba(15, 23, 42, 0.08),
+    0 1px 3px rgba(15, 23, 42, 0.06);
+}
+
+.apartment-card-media {
+  min-height: 10rem;
+  background-color: var(--domo-purple-50);
+}
+
+/* La posición absoluta se mantiene aquí (no como utilidades) porque en
+   móvil la imagen pasa a ser estática. */
+.apartment-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.apartment-card-media-fallback {
+  min-height: inherit;
+  place-items: center;
+  background: radial-gradient(
+    circle at 50% 30%,
+    var(--domo-purple-100),
+    var(--domo-purple-50) 72%
+  );
+  color: var(--domo-purple-300);
+}
+
+.apartment-card-body {
+  gap: 0.375rem;
+  padding: 1.5rem 1.75rem;
+}
+
+.apartment-card-title {
+  color: #04084b;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.apartment-card-features {
+  margin: 0.625rem 0 0;
+  padding: 0.625rem 0 0;
+}
+
+.apartment-card-badge {
+  padding: 0.375rem 0.875rem;
+  border: 1px solid var(--domo-purple-200);
+  background-color: var(--domo-purple-50);
+  color: var(--domo-purple-700);
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.apartment-card-badge svg {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  color: var(--domo-purple-600);
+}
+
+/* ==========================================================================
+   Panel derecho: canon, depósito y fechas de pago del contrato
+   ========================================================================== */
+.apartment-card-side {
+  min-width: 13.5rem;
+  max-width: 17rem;
+  padding: 1.5rem 1.75rem;
+  /* El borde se mantiene aquí (no con la utilidad border-start) porque
+     en móvil pasa a ser superior. */
+  border-left: 1px solid var(--domo-slate-200);
+  background-color: var(--domo-slate-50);
+}
+
+.apartment-card-side-list {
+  gap: 0.875rem;
+}
+
+.apartment-card-side-row {
+  gap: 0.125rem;
+}
+
+.apartment-card-side-row dt {
+  gap: 0.375rem;
+  color: var(--domo-slate-500);
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.apartment-card-side-row dt svg {
+  flex-shrink: 0;
+  width: 0.75rem;
+  height: 0.75rem;
+  color: var(--domo-purple-600);
+}
+
+.apartment-card-side-row dd {
+  margin: 0;
+  color: #04084b;
+  font-size: 0.9375rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================================================
+   Pestañas debajo de la card: arrendatario y contrato
+   ========================================================================== */
+.apartment-tabs {
+  margin-top: 1.5rem;
+  box-shadow:
+    0 4px 12px rgba(15, 23, 42, 0.08),
+    0 1px 3px rgba(15, 23, 42, 0.06);
+}
+
+.apartment-tabs-button {
+  background-color: transparent;
+  color: var(--domo-slate-500);
+  font-family: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.apartment-tabs-button:hover {
+  color: var(--domo-purple-700);
+}
+
+.apartment-tabs-button:focus-visible {
+  outline: 2px solid var(--domo-purple-600);
+  outline-offset: 2px;
+}
+
+.apartment-tabs-button.is-active {
+  background-color: var(--domo-purple-100);
+  color: var(--domo-purple-700);
+}
+
+.apartment-tabs-button svg {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+}
+
+.apartment-tabs-panel {
+  padding: 1.5rem 1.75rem;
+}
+
+/* Los estilos del contenido de cada pestaña viven junto a su componente:
+   tabs/Contract/ContractTab.css y tabs/Tenant/TenantTab.css. */
+
+/* ==========================================================================
+   Carga (skeleton): el shimmer es compartido (index.css), aquí solo la
+   estructura y las medidas
+   ========================================================================== */
+.apartment-card-skeleton {
+  grid-template-columns: 12rem minmax(0, 1fr);
+}
+
+.apartment-skeleton-media {
+  min-height: 10rem;
+}
+
+.apartment-skeleton-body {
+  padding: 1.5rem 1.75rem;
+}
+
+.apartment-skeleton-line-title {
+  width: 55%;
+  height: 1.5rem;
+}
+
+.apartment-skeleton-line-text {
+  width: 80%;
+  height: 1rem;
+}
+
+.apartment-skeleton-line-short {
+  width: 40%;
+  height: 1rem;
+}
+
+/* ==========================================================================
+   Ajustes en móvil
+   ========================================================================== */
+@media (max-width: 767.98px) {
+  .apartment-card,
+  .apartment-card-skeleton {
+    grid-template-columns: 1fr;
+  }
+
+  /* En móvil la imagen vuelve a adaptarse al ancho disponible. */
+  .apartment-card-media {
+    min-height: 0;
+  }
+
+  .apartment-card-img {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+
+  .apartment-card-media-fallback,
+  .apartment-skeleton-media {
+    min-height: 12rem;
+  }
+
+  /* El panel del contrato pasa debajo del contenido, separado por borde. */
+  .apartment-card-side {
+    max-width: none;
+    border-top: 1px solid var(--domo-slate-200);
+    border-left: 0;
+  }
+}

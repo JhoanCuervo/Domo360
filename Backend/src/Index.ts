@@ -2,8 +2,14 @@
 import doGet from "./model/doGet";
 global.doGet = doGet;
 
-import { Auth } from "./controller/Auth";
+import { Auth } from "./controller/Admin/Auth";
 global.Auth = Auth;
 
-import { Home } from "./controller/Home";
+import { Home } from "./controller/Admin/Home";
 global.Home = Home;
+
+import { Apartment } from "./controller/Admin/Apartment";
+global.Apartment = Apartment;
+
+import { fileBase64 } from "./utils/Drive";
+global.fileBase64 = fileBase64;

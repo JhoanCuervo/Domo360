@@ -1,9 +1,6 @@
-export type userResponse = {
-  name: string;
-  rol: string;
-  alias: string;
-};
+import type { User } from "./user";
 
-export type SessionUser = userResponse & {
-  id: number;
-};
+/** Respuesta de `Auth`: el usuario sin el id. */
+export type userResponse = Omit<User, "id">;
+
+export type SessionUser = User;

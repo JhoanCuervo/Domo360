@@ -1,3 +1,5 @@
+import { Apartment, Contract, User } from "./tables";
+
 /** Métodos que ORMN agrega a los registros guardados en una tabla. */
 export type OrmnRecord<T> = T & {
   _rowIndex?: number;
@@ -20,10 +22,16 @@ export interface OrmnTable<T> {
     options?: { caseInsensitive?: boolean },
   ): OrmnRecord<T> | null | undefined;
   _create(data: T): OrmnRecord<T>;
+  _findManyByQuery(query: string): { data: T[] };
+  _firstByQuery(query: string): OrmnRecord<T> | null | undefined;
 }
 
 /** Acceso a las tablas abiertas por ORMN. */
 
 export interface OrmnDatabase {
-  _getTables(): Record<string, OrmnTable<Record<string, unknown>>>;
+  _getTables(): Record<string, OrmnTable<Record<string, unknown>>> & {
+    apartments: OrmnTable<Apartment>;
+    contracts: OrmnTable<Contract>;
+    users: OrmnTable<User>;
+  };
 }

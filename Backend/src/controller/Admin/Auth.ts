@@ -1,8 +1,8 @@
-import Users from "../model/Users";
+import Users from "../../model/Users";
 
 export const Auth = ({ idAuth }: { idAuth: number }) => {
   const user = Users()._find(idAuth);
-  if (!user) return false;
+  if (!user) return JSON.stringify(false);
   const { _rowIndex, _save, _delete, id, ...data } = user;
-  return data;
+  return JSON.stringify(data);
 };

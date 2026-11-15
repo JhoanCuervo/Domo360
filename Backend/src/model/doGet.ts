@@ -7,6 +7,7 @@ const doGet = (
 ): GoogleAppsScript.HTML.HtmlOutput => {
   return HtmlService.createHtmlOutputFromFile("index")
     .setTitle("Domo360")
-    .addMetaTag("viewport", "width=device-width, initial-scale=1");
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL)
+    .addMetaTag("viewport", "width=device-width, initial-scale=1.0");
 };
 export default doGet;

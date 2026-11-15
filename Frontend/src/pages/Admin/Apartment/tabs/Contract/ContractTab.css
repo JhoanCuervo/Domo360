@@ -1,0 +1,46 @@
+/* ==========================================================================
+   Pestaña Contrato: card de datos y filas etiqueta/valor.
+   Las columnas son de Bootstrap (`row`/`col-*` en ContractTab.tsx).
+   El layout general (grid, borde, radio, fondo y sombra) viene de
+   utilidades de Bootstrap en ContractTab.tsx.
+   ========================================================================== */
+
+.apartment-tabs-contract-data {
+  gap: 0.875rem;
+  padding: 1.25rem;
+}
+
+/* La card del PDF comparte el mismo aspecto que la columna de datos
+   (borde, radio, sombra y fondo); solo cambia el alto, que lo fija el
+   visor, y la columna de datos se estira para igualarlo. En pantalla
+   completa el visor recupera su fondo oscuro habitual. */
+.apartment-tabs-contract-pdf .pdf-viewer:not(:fullscreen) {
+  background-color: var(--domo-slate-50);
+}
+
+.apartment-tabs-row {
+  gap: 0.125rem;
+}
+
+.apartment-tabs-row dt {
+  color: var(--domo-slate-500);
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.apartment-tabs-row dd {
+  margin: 0;
+  color: #04084b;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.apartment-tabs-empty {
+  margin: 0;
+  color: var(--domo-slate-500);
+  font-size: 0.875rem;
+}
