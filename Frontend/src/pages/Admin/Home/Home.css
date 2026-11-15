@@ -1,55 +1,34 @@
 /* ==========================================================================
-   Inicio: sección de propiedades
+   Inicio: sección de propiedades (solo estilos propios; el layout,
+   espaciado y forma vienen de utilidades de Bootstrap en los componentes)
    ========================================================================== */
 .home-section {
-  display: flex;
-  flex-direction: column;
   gap: 1.25rem;
 }
 
 /* ==========================================================================
    Encabezado de la sección
    ========================================================================== */
-.home-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.home-header-main {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
 .home-header-content {
-  display: flex;
-  flex-direction: column;
   gap: 0.125rem;
 }
 
 .home-header-icon {
-  display: grid;
   width: 3.25rem;
   height: 3.25rem;
   place-items: center;
-  border-radius: 1rem;
   background-color: var(--domo-purple-50);
   color: var(--domo-purple-600);
   font-size: 1.5rem;
 }
 
 .home-header-title {
-  margin: 0;
   color: #04084b;
   font-size: 2.5rem;
   font-weight: 800;
 }
 
 .home-header-subtitle {
-  margin: 0;
   color: var(--domo-slate-500);
   font-size: 1rem;
 }
@@ -76,10 +55,9 @@
    Tarjetas de inmuebles
    ========================================================================== */
 .property-card {
-  overflow: hidden;
+  /* El borde se mantiene aquí (no con la utilidad border) porque el
+     estado hover lo cambia y las utilidades usan !important. */
   border: 1px solid var(--domo-slate-200);
-  border-radius: 1rem;
-  background-color: #ffffff;
   box-shadow:
     0 4px 12px rgba(15, 23, 42, 0.08),
     0 1px 3px rgba(15, 23, 42, 0.06);
@@ -97,17 +75,11 @@
 }
 
 .property-card-media {
-  position: relative;
-  overflow: hidden;
   aspect-ratio: 4 / 1.9;
   background-color: var(--domo-purple-50);
 }
 
 .property-card-img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   transition: transform 0.35s ease;
 }
 
@@ -116,9 +88,6 @@
 }
 
 .property-card-media-fallback {
-  display: grid;
-  width: 100%;
-  height: 100%;
   place-items: center;
   background: radial-gradient(
     circle at 50% 30%,
@@ -128,35 +97,7 @@
   color: var(--domo-purple-300);
 }
 
-.property-status {
-  position: absolute;
-  top: 0.875rem;
-  right: 0.875rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  padding: 0.375rem 0.625rem;
-  border-radius: 999px;
-  background-color: rgba(255, 255, 255, 0.94);
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  box-shadow: 0 8px 20px -12px rgba(15, 23, 42, 0.5);
-}
-
-.property-status.is-rented {
-  color: var(--domo-purple-700);
-}
-
-.property-status.is-vacant {
-  color: var(--domo-emerald-600);
-}
-
 .property-card-body {
-  position: relative;
-  display: flex;
-  flex-direction: column;
   gap: 0.375rem;
   padding: 1.125rem 1.25rem 1.25rem;
   margin-top: -1rem;
@@ -165,42 +106,14 @@
 }
 
 .property-card-title {
-  margin: 0;
   color: #04084b;
   font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-.property-card-facts {
-  display: grid;
-  gap: 0.375rem;
-  margin: 0.125rem 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.property-card-fact {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.625rem;
-  color: #000000;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.45;
-}
-
-.property-card-fact svg {
-  flex-shrink: 0;
-  width: 1.375rem;
-  height: 1.375rem;
-  margin-top: 0.125rem;
-  color: var(--domo-purple-600);
-}
-
+/* El display y el gap se mantienen aquí (no como utilidades) porque en
+   móvil cambian; las utilidades de Bootstrap usan !important. */
 .property-card-features {
   display: flex;
   flex-wrap: wrap;
@@ -208,18 +121,14 @@
   margin: 0.625rem 0 0;
   padding: 0.625rem 0 0;
   border-top: 1px solid var(--domo-purple-200);
-  list-style: none;
 }
 
 .property-card-feature {
-  display: inline-flex;
-  align-items: center;
   gap: 0.5rem;
   padding: 0 1.25rem;
   border-left: 1px solid var(--domo-purple-200);
   color: var(--domo-slate-700);
   font-size: 0.9375rem;
-  font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
 
@@ -236,55 +145,25 @@
 }
 
 /* ==========================================================================
-   Carga (skeleton)
+   Carga (skeleton): el shimmer es compartido (index.css), aquí solo las
+   medidas de cada pieza
    ========================================================================== */
-.property-card-skeleton {
-  pointer-events: none;
-}
-
-.skeleton-block,
-.skeleton-line {
-  border-radius: 0.5rem;
-  background: linear-gradient(
-    90deg,
-    #f1f5f9 25%,
-    var(--domo-purple-100) 37%,
-    #f1f5f9 63%
-  );
-  background-size: 400% 100%;
-  animation: domo-shimmer 1.4s ease infinite;
-}
-
-.skeleton-media {
-  width: 100%;
-  height: 100%;
-  border-radius: 0;
-}
-
-.skeleton-line {
-  display: block;
-}
-
-.property-card-skeleton .skeleton-line-title {
+.skeleton-line-title {
   width: 60%;
   height: 1.25rem;
 }
 
 .skeleton-fact {
-  display: flex;
-  align-items: center;
   gap: 0.625rem;
   margin-top: 0.125rem;
 }
 
 .skeleton-fact-icon {
-  flex-shrink: 0;
   width: 1.375rem;
   height: 1.375rem;
 }
 
 .skeleton-fact-text {
-  flex: 1;
   height: 0.9375rem;
 }
 
@@ -298,8 +177,6 @@
 }
 
 .skeleton-feature {
-  display: inline-flex;
-  align-items: center;
   gap: 0.5rem;
   padding: 0 1.25rem;
   border-left: 1px solid var(--domo-purple-200);
@@ -311,7 +188,6 @@
 }
 
 .skeleton-feature-icon {
-  flex-shrink: 0;
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -319,59 +195,6 @@
 .skeleton-feature-text {
   width: 3.5rem;
   height: 0.8125rem;
-}
-
-@keyframes domo-shimmer {
-  from {
-    background-position: 100% 0;
-  }
-
-  to {
-    background-position: 0 0;
-  }
-}
-
-/* ==========================================================================
-   Estados vacío y error
-   ========================================================================== */
-.home-feedback {
-  display: grid;
-  justify-items: center;
-  gap: 0.875rem;
-  padding: 3rem 1.5rem;
-  border: 1px dashed var(--domo-slate-300);
-  border-radius: 1rem;
-  background-color: #ffffff;
-  text-align: center;
-}
-
-.home-feedback-icon {
-  display: grid;
-  width: 3.5rem;
-  height: 3.5rem;
-  place-items: center;
-  border-radius: 1rem;
-  background-color: var(--domo-purple-50);
-  color: var(--domo-purple-600);
-}
-
-.home-feedback.is-error .home-feedback-icon {
-  background-color: #fef2f2;
-  color: var(--domo-red-600);
-}
-
-.home-feedback-title {
-  margin: 0;
-  color: #04084b;
-  font-size: 1.0625rem;
-  font-weight: 800;
-}
-
-.home-feedback-text {
-  max-width: 36rem;
-  margin: 0;
-  color: var(--domo-slate-500);
-  font-size: 0.875rem;
 }
 
 /* ==========================================================================
@@ -424,10 +247,5 @@
 
   .property-card:hover .property-card-img {
     transform: none;
-  }
-
-  .skeleton-block,
-  .skeleton-line {
-    animation: none;
   }
 }

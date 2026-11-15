@@ -69,24 +69,35 @@ const Login = () => {
   };
 
   return (
-    <main className="login-screen">
-      <div className="login-glow" aria-hidden />
-      <div className="login-blob" aria-hidden />
+    <main className="login-screen position-relative d-grid min-vh-100 overflow-hidden">
+      <div
+        className="login-glow position-absolute top-0 start-0 w-100 h-100 pe-none"
+        aria-hidden
+      />
+      <div
+        className="login-blob position-absolute start-50 translate-middle-x rounded-circle pe-none"
+        aria-hidden
+      />
 
-      <section className="login-shell">
-        <div className="login-logo">
+      <section className="login-shell position-relative w-100">
+        <div className="login-logo d-flex justify-content-center">
           <Domo360Logo size={44} />
         </div>
 
         <div className="card login-card">
           {session ? (
-            <div className="login-success">
-              <div className="login-success-icon">
+            <div className="text-center">
+              <div className="login-success-icon d-grid rounded-circle mx-auto mb-3">
                 <LuCheck size={24} strokeWidth={2.5} aria-hidden />
               </div>
-              <h1 className="login-success-title">Ingreso exitoso</h1>
-              <p className="login-success-text">
-                Cédula <span className="login-success-cedula">{session}</span>
+              <h1 className="login-success-title fs-5 fw-bold mb-0">
+                Ingreso exitoso
+              </h1>
+              <p className="login-success-text mt-2 mb-0">
+                Cédula{" "}
+                <span className="login-success-cedula fw-semibold">
+                  {session}
+                </span>
               </p>
               <Button
                 variant="secondary"
@@ -102,9 +113,9 @@ const Login = () => {
             </div>
           ) : (
             <>
-              <header className="login-header">
-                <h1 className="login-title">Bienvenido</h1>
-                <p className="login-subtitle">
+              <header className="mb-4 text-center">
+                <h1 className="login-title fs-4 fw-bold mb-0">Bienvenido</h1>
+                <p className="login-subtitle mt-2 mb-0">
                   Ingresa con tu número de cédula
                 </p>
               </header>
@@ -128,7 +139,7 @@ const Login = () => {
                   type="submit"
                   loading={submitting}
                   fullWidth
-                  className="login-submit"
+                  className="mt-4"
                 >
                   {submitting ? "Verificando…" : "Ingresar"}
                 </Button>
@@ -137,7 +148,7 @@ const Login = () => {
           )}
         </div>
 
-        <p className="login-footer">
+        <p className="login-footer mt-4 mb-0 text-center">
           © {new Date().getFullYear()} Domo360. Todos los derechos reservados.
         </p>
       </section>

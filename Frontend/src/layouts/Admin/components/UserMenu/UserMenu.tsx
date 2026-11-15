@@ -41,18 +41,26 @@ const UserMenu = () => {
   }, [open]);
 
   return (
-    <div className="admin-user-menu" ref={rootRef}>
+    <div
+      className="admin-user-menu position-relative d-flex justify-content-end"
+      ref={rootRef}
+    >
       <button
         type="button"
-        className="admin-user-trigger"
+        className="admin-user-trigger d-inline-flex align-items-center rounded-pill bg-white"
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
       >
-        <span className="admin-user-avatar" aria-hidden>
+        <span
+          className="admin-user-avatar d-grid rounded-circle flex-shrink-0"
+          aria-hidden
+        >
           {initial}
         </span>
-        <span className="admin-user-alias">{name}</span>
+        <span className="admin-user-alias d-none d-md-block text-truncate">
+          {name}
+        </span>
         <svg
           className={open ? "admin-user-caret is-open" : "admin-user-caret"}
           viewBox="0 0 16 16"
@@ -72,8 +80,11 @@ const UserMenu = () => {
       </button>
 
       {open && (
-        <div className="admin-user-dropdown" role="menu">
-          <div className="admin-user-summary">
+        <div
+          className="admin-user-dropdown position-absolute end-0 z-3 border rounded-2 bg-white"
+          role="menu"
+        >
+          <div className="admin-user-summary d-grid border-bottom">
             <span className="admin-user-summary-alias">{name}</span>
             {user?.name && (
               <span className="admin-user-summary-name">{user.name}</span>
@@ -86,7 +97,7 @@ const UserMenu = () => {
           <NavLink
             to="/login"
             role="menuitem"
-            className="admin-user-action"
+            className="admin-user-action d-flex align-items-center rounded-3 text-decoration-none"
             onClick={() => {
               setOpen(false);
               clearUser();

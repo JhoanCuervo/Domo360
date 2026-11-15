@@ -38,9 +38,9 @@ const Domo360Mark = ({ size = 48, ...props }: Props) => (
 
 /** Logotipo completo (símbolo + wordmark). */
 const Domo360Logo = ({ size = 48 }: { size?: number }) => (
-  <span className="brand">
+  <span className="d-inline-flex align-items-center gap-3">
     <Domo360Mark size={size} />
-    <span className="brand-wordmark" style={{ fontSize: size * 0.52 }}>
+    <span className="brand-wordmark lh-1" style={{ fontSize: size * 0.52 }}>
       domo<span className="brand-wordmark-accent">360</span>
     </span>
   </span>

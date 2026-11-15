@@ -65,15 +65,15 @@ const Home = () => {
   const total = apartments.length;
 
   return (
-    <section className="home-section" aria-busy={loading}>
-      <header className="home-header">
-        <div className="home-header-main">
-          <span className="home-header-icon" aria-hidden="true">
+    <section className="home-section d-flex flex-column" aria-busy={loading}>
+      <header className="d-flex align-items-center justify-content-between flex-wrap gap-3">
+        <div className="d-flex align-items-center gap-3">
+          <span className="home-header-icon d-grid rounded-4" aria-hidden="true">
             <LuHouse />
           </span>
-          <div className="home-header-content">
-            <h1 className="home-header-title">Propiedades</h1>
-            <p className="home-header-subtitle">
+          <div className="home-header-content d-flex flex-column">
+            <h1 className="home-header-title m-0">Propiedades</h1>
+            <p className="home-header-subtitle m-0">
               Gestiona y visualiza los inmuebles de tu portafolio.
             </p>
           </div>

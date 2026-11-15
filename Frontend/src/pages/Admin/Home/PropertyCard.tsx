@@ -10,6 +10,7 @@ import {
   LuRuler,
 } from "react-icons/lu";
 
+import { useNavigate } from "react-router";
 import type { Apartment } from "../../../types/apartment";
 import { getImageUrl, isRented } from "./Home.helpers";
 
@@ -19,24 +20,27 @@ const hasValue = (value: string | number | undefined) =>
 
 /** Tarjeta con la foto, ubicación y estado de arriendo de un inmueble. */
 const PropertyCard = ({ apartment }: { apartment: Apartment }) => {
+  const navigate = useNavigate();
   const [imageFailed, setImageFailed] = useState(false);
   const rented = isRented(apartment.status);
 
   const features = [
     hasValue(apartment.bedrooms) && (
-      <li key="bedrooms" className="property-card-feature">
+      <li key="bedrooms" className="property-card-feature d-inline-flex align-items-center fw-semibold">
         <LuBedDouble size={22} strokeWidth={1.75} aria-hidden />
-        {apartment.bedrooms} {Number(apartment.bedrooms) === 1 ? "Habitación" : "Habitaciones"}
+        {apartment.bedrooms}{" "}
+        {Number(apartment.bedrooms) === 1 ? "Habitación" : "Habitaciones"}
       </li>
     ),
     hasValue(apartment.bathrooms) && (
-      <li key="bathrooms" className="property-card-feature">
+      <li key="bathrooms" className="property-card-feature d-inline-flex align-items-center fw-semibold">
         <LuBath size={22} strokeWidth={1.75} aria-hidden />
-        {apartment.bathrooms} {Number(apartment.bathrooms) === 1 ? "Baño" : "Baños"}
+        {apartment.bathrooms}{" "}
+        {Number(apartment.bathrooms) === 1 ? "Baño" : "Baños"}
       </li>
     ),
     hasValue(apartment.area) && (
-      <li key="area" className="property-card-feature">
+      <li key="area" className="property-card-feature d-inline-flex align-items-center fw-semibold">
         <LuRuler size={22} strokeWidth={1.75} aria-hidden />
         {apartment.area} m²
       </li>
@@ -45,11 +49,16 @@ const PropertyCard = ({ apartment }: { apartment: Apartment }) => {
 
   return (
     <div className="col-12 col-md-6 col-xl-4">
-      <article className="property-card h-100">
-        <div className="property-card-media">
+      <article
+        className="property-card rounded-4 bg-white overflow-hidden h-100"
+        onClick={() => {
+          navigate(`/admin/apartment/${apartment.id}`);
+        }}
+      >
+        <div className="property-card-media position-relative overflow-hidden">
           {imageFailed ? (
             <div
-              className="property-card-media-fallback"
+              className="property-card-media-fallback d-grid w-100 h-100"
               role="img"
               aria-label={`Sin imagen de ${apartment.type.toLowerCase()} ${apartment.number}`}
             >
@@ -57,7 +66,7 @@ const PropertyCard = ({ apartment }: { apartment: Apartment }) => {
             </div>
           ) : (
             <img
-              className="property-card-img"
+              className="property-card-img d-block w-100 h-100 object-fit-cover"
               src={getImageUrl(apartment.id)}
               alt={`${apartment.type} ${apartment.number} de la torre ${apartment.torre}`}
               loading="lazy"
@@ -66,7 +75,9 @@ const PropertyCard = ({ apartment }: { apartment: Apartment }) => {
           )}
 
           <span
-            className={`property-status ${rented ? "is-rented" : "is-vacant"}`}
+            className={`status-chip position-absolute d-inline-flex align-items-center rounded-pill text-uppercase ${
+              rented ? "is-rented" : "is-vacant"
+            }`}
           >
             {rented ? (
               <LuKeyRound size={13} strokeWidth={2} aria-hidden />
@@ -77,14 +88,19 @@ const PropertyCard = ({ apartment }: { apartment: Apartment }) => {
           </span>
         </div>
 
-        <div className="property-card-body">
-          <h2 className="property-card-title">
+        <div className="property-card-body position-relative d-flex flex-column">
+          <h2 className="property-card-title m-0 text-truncate">
             {apartment.type} {apartment.number}
           </h2>
 
-          <ul className="property-card-facts">
-            <li className="property-card-fact">
-              <LuMapPin size={16} strokeWidth={1.75} aria-hidden />
+          <ul className="card-facts d-grid list-unstyled">
+            <li className="card-fact d-flex align-items-start fw-semibold">
+              <LuMapPin
+                className="card-fact-icon flex-shrink-0"
+                size={16}
+                strokeWidth={1.75}
+                aria-hidden
+              />
               <span>
                 {apartment.address}, {apartment.city}, {apartment.departament}
               </span>
@@ -92,7 +108,9 @@ const PropertyCard = ({ apartment }: { apartment: Apartment }) => {
           </ul>
 
           {features.length > 0 && (
-            <ul className="property-card-features">{features}</ul>
+            <ul className="property-card-features list-unstyled">
+              {features}
+            </ul>
           )}
         </div>
       </article>

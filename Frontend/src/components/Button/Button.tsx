@@ -1,10 +1,11 @@
-import { LuLoaderCircle } from "react-icons/lu";
-
 import type { ButtonProps, ButtonVariant } from "./Button.types";
 
+/** Base de Bootstrap + modificador de color de la marca. */
+const BASE_CLASS = "btn btn-domo";
+
 const VARIANTS: Record<ButtonVariant, string> = {
-  primary: "btn-brand",
-  secondary: "btn-brand-outline",
+  primary: "btn-domo-primary",
+  secondary: "btn-domo-outline",
 };
 
 /** Botón reutilizable con variantes y estado de carga. */
@@ -22,13 +23,13 @@ const Button = ({
     type={type}
     disabled={disabled || loading}
     aria-busy={loading}
-    className={`${VARIANTS[variant]}${fullWidth ? " w-100" : ""}${
+    className={`${BASE_CLASS} ${VARIANTS[variant]}${fullWidth ? " w-100" : ""}${
       className ? ` ${className}` : ""
     }`}
     {...buttonProps}
   >
     {loading && (
-      <LuLoaderCircle size={16} className="btn-spinner" aria-hidden />
+      <span className="spinner-border spinner-border-sm" aria-hidden />
     )}
     {children}
   </button>

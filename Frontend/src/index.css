@@ -45,7 +45,20 @@
   --domo-radius: 0.75rem;
   --domo-font-sans: "Nunito Variable", ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  /* Fuente global: tambiÃ©n pisa la familia por defecto de Bootstrap. */
+
+  /* ==========================================================================
+     Tema sobre Bootstrap: los tokens de marca alimentan las utilidades de
+     Bootstrap (text-danger, border, rounded-2, bg-body, ...), de modo que
+     el CSS propio solo conserva lo que Bootstrap no puede expresar.
+     ========================================================================== */
+  --bs-primary-rgb: 79, 70, 229; /* indigo-600 */
+  --bs-danger-rgb: 220, 38, 38; /* red-600 */
+  --bs-body-color: var(--domo-slate-900);
+  --bs-body-bg: var(--domo-slate-50);
+  --bs-body-bg-rgb: 248, 250, 252;
+  --bs-border-color: var(--domo-slate-200);
+  --bs-border-radius: var(--domo-radius);
+  /* Fuente global: también pisa la familia por defecto de Bootstrap. */
   --bs-font-sans-serif: var(--domo-font-sans);
   --bs-body-font-family: var(--domo-font-sans);
 }
@@ -53,6 +66,11 @@
 html,
 body {
   font-family: var(--domo-font-sans);
+}
+
+body {
+  font-family: var(--domo-font-sans);
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Refuerzo para controles de formulario y botones (Bootstrap los resetea). */
@@ -64,28 +82,13 @@ textarea {
   font-family: inherit;
 }
 
-body {
-  font-family: var(--domo-font-sans);
-  background-color: var(--domo-slate-50);
-  color: var(--domo-slate-900);
-  -webkit-font-smoothing: antialiased;
-}
-
 /* ==========================================================================
-   Logotipo Domo360
+   Logotipo Domo360 (layout con utilidades de Bootstrap en el componente)
    ========================================================================== */
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
 .brand-wordmark {
-  font-family: var(--domo-font-sans);
   font-weight: 800;
   letter-spacing: -0.025em;
   color: var(--domo-slate-900);
-  line-height: 1;
 }
 
 .brand-wordmark-accent {
@@ -93,20 +96,14 @@ body {
 }
 
 /* ==========================================================================
-   Campo de formulario
+   Campo de formulario (sobre .form-control de Bootstrap)
    ========================================================================== */
 .field-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.75rem;
   margin-bottom: 0.375rem;
 }
 
 .field-label {
-  margin-bottom: 0;
   font-size: 0.875rem;
-  font-weight: 600;
   color: var(--domo-slate-700);
 }
 
@@ -116,25 +113,15 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-.field-control {
-  position: relative;
-}
-
 .field-icon {
-  position: absolute;
-  inset-block: 0;
-  left: 0;
-  display: grid;
   width: 2.75rem;
   place-items: center;
   color: var(--domo-slate-400);
-  pointer-events: none;
 }
 
 .form-control.field-input {
   padding: 0.75rem 1rem;
   border: 1px solid var(--domo-slate-300);
-  border-radius: var(--domo-radius);
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.025em;
@@ -179,86 +166,189 @@ body {
 }
 
 .field-error {
-  margin-top: 0.5rem;
-  margin-bottom: 0;
   font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--domo-red-600);
 }
 
 /* ==========================================================================
-   Botones
+   Botones (modificadores de color sobre .btn de Bootstrap)
    ========================================================================== */
-.btn-brand,
-.btn-brand-outline {
+.btn-domo {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 1rem;
-  border-radius: var(--domo-radius);
   font-size: 0.875rem;
   font-weight: 700;
-  line-height: 1.5;
-  transition: background-color 0.15s ease, color 0.15s ease,
-    border-color 0.15s ease;
 }
 
-.btn-brand {
+.btn-domo-primary {
   color: #ffffff;
   background-color: var(--domo-indigo-600);
-  border: 1px solid var(--domo-indigo-600);
+  border-color: var(--domo-indigo-600);
   box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.25),
     0 4px 6px -4px rgba(79, 70, 229, 0.25);
 }
 
-.btn-brand:hover,
-.btn-brand:first-child:active {
+/* Los estados hover/focus/active de Bootstrap (.btn:hover, .btn:focus-visible
+   y :not(.btn-check) + .btn:active) usan variables sin definir en la base
+   y caerían a "transparente"/heredado; se repite la clase para ganar en
+   especificidad. */
+.btn-domo.btn-domo-primary:hover,
+.btn-domo.btn-domo-primary:focus-visible,
+.btn-domo.btn-domo-primary:active {
   color: #ffffff;
   background-color: var(--domo-indigo-700);
   border-color: var(--domo-indigo-700);
 }
 
-.btn-brand-outline {
+.btn-domo-outline {
   color: var(--domo-slate-700);
   background-color: #ffffff;
-  border: 1px solid var(--domo-slate-200);
+  border-color: var(--domo-slate-200);
 }
 
-.btn-brand-outline:hover,
-.btn-brand-outline:first-child:active {
+.btn-domo.btn-domo-outline:hover,
+.btn-domo.btn-domo-outline:focus-visible,
+.btn-domo.btn-domo-outline:active {
   color: var(--domo-slate-700);
   background-color: var(--domo-slate-50);
   border-color: var(--domo-slate-200);
 }
 
-.btn-brand:focus-visible,
-.btn-brand-outline:focus-visible {
+.btn-domo:focus-visible {
   outline: 2px solid var(--domo-indigo-600);
   outline-offset: 2px;
   box-shadow: none;
 }
 
-.btn-brand:disabled,
-.btn-brand-outline:disabled {
+/* Bootstrap deja pointer-events: none en botones deshabilitados; se recupera
+   para que el cursor de espera siga mostrándose durante la carga. */
+.btn-domo:disabled {
   opacity: 0.7;
   cursor: wait;
+  pointer-events: auto;
 }
 
-.btn-spinner {
-  width: 1rem;
-  height: 1rem;
-  animation: domo-spin 0.8s linear infinite;
+.btn-domo.btn-domo-primary:disabled {
+  color: #ffffff;
 }
 
-@keyframes domo-spin {
+.btn-domo.btn-domo-outline:disabled {
+  color: var(--domo-slate-700);
+}
+
+/* ==========================================================================
+   Bloques compartidos entre páginas (antes repetidos en Home y Apartment)
+   ========================================================================== */
+
+/* Chip del estado de arriendo (tarjeta de inmueble y ficha del apartamento).
+   La posición, el layout y la forma vienen de utilidades de Bootstrap. */
+.status-chip {
+  top: 0.875rem;
+  right: 0.875rem;
+  gap: 0.375rem;
+  padding: 0.375rem 0.625rem;
+  background-color: rgba(255, 255, 255, 0.94);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  box-shadow: 0 8px 20px -12px rgba(15, 23, 42, 0.5);
+}
+
+.status-chip.is-rented {
+  color: var(--domo-purple-700);
+}
+
+.status-chip.is-vacant {
+  color: var(--domo-emerald-600);
+}
+
+/* Lista y fila de datos del inmueble (ubicación, etc.). */
+.card-facts {
+  gap: 0.375rem;
+  margin: 0.125rem 0 0;
+}
+
+.card-fact {
+  gap: 0.625rem;
+  color: #000000;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.card-fact-icon {
+  width: 1.375rem;
+  height: 1.375rem;
+  margin-top: 0.125rem;
+  color: var(--domo-purple-600);
+}
+
+/* Estado vacío / error compartido. */
+.feedback-box {
+  justify-items: center;
+  gap: 0.875rem;
+  padding: 3rem 1.5rem;
+  border: 1px dashed var(--domo-slate-300);
+  border-radius: 1rem;
+  background-color: #ffffff;
+}
+
+.feedback-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  place-items: center;
+  background-color: var(--domo-purple-50);
+  color: var(--domo-purple-600);
+}
+
+.feedback-box.is-error .feedback-icon {
+  background-color: #fef2f2;
+  color: var(--domo-red-600);
+}
+
+.feedback-title {
+  color: #04084b;
+  font-size: 1.0625rem;
+  font-weight: 800;
+}
+
+.feedback-text {
+  max-width: 36rem;
+  color: var(--domo-slate-500);
+  font-size: 0.875rem;
+}
+
+/* Esqueleto de carga (shimmer) compartido. */
+.skeleton-block,
+.skeleton-line {
+  background: linear-gradient(
+    90deg,
+    #f1f5f9 25%,
+    var(--domo-purple-100) 37%,
+    #f1f5f9 63%
+  );
+  background-size: 400% 100%;
+  animation: domo-shimmer 1.4s ease infinite;
+}
+
+.skeleton-line {
+  display: block;
+}
+
+@keyframes domo-shimmer {
+  from {
+    background-position: 100% 0;
+  }
+
   to {
-    transform: rotate(360deg);
+    background-position: 0 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .btn-spinner {
-    animation-duration: 2.4s;
+  .skeleton-block,
+  .skeleton-line {
+    animation: none;
   }
 }
