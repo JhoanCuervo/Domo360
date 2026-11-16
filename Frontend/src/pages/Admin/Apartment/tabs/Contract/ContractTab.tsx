@@ -23,7 +23,7 @@ const ContractTab = ({ contract }: { contract: Contract }) => {
 
       <div className="col-12 col-xl-6 apartment-tabs-contract-pdf order-1 order-md-2">
         <PdfViewer
-          fileId="1NdXrVLfrFKQbfEAJw3-8g_KSj21_zk4Z"
+          fileId={contract.file}
           fileName="contrato-de-arrendamiento.pdf"
         />
       </div>

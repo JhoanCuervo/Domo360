@@ -29,16 +29,17 @@ export type Tenant = Omit<User, "alias" | "rol">;
 
 /** Registro de la tabla Contracts en Google Sheets. */
 export type Contract = {
-  id: string | number;
+  id: number;
   user_id: number;
   date_initial: string;
   date_finish: string;
-  canon: number | string;
-  price: number | string;
-  extension_month: number | string;
-  extension: number | string | boolean;
-  administration_fee: number | string;
-  status: string | boolean;
+  canon: number;
+  price: number;
+  extension_month: boolean;
+  extension: number;
+  administration_fee: number;
+  status: boolean;
+  file: string;
 };
 
 export type ApartmentDetail = {
