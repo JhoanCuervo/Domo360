@@ -14,9 +14,7 @@ type returnDataProps = {
   tenant?: User | null;
 };
 
-export const Apartment = (
-  { id }: { id: string } = { id: "1J17mA9stq0AwEXNKDg01iQLu9etFOtnj" },
-) => {
+export const Apartment = ({ id }: { id: string }) => {
   const apartmentData = Apartments()._find(id);
   if (!apartmentData)
     return JSON.stringify({ error: "No existe apartamento con ese ID" });

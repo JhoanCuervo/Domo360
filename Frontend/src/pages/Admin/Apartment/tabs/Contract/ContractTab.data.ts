@@ -1,55 +1,60 @@
 import type { Contract } from "../../../../../types/apartment";
-import { formatDate, formatMoney } from "../../ApartmentCard";
 
-/** Fila de datos del contrato para la card. */
-export type ContractRow = {
-  label: string;
-  value: string;
+/** Meses abreviados usados en las fechas del contrato. */
+const MONTHS = [
+  "ene.",
+  "feb.",
+  "mar.",
+  "abr.",
+  "may.",
+  "jun.",
+  "jul.",
+  "ago.",
+  "sept.",
+  "oct.",
+  "nov.",
+  "dic.",
+];
+
+/** Convierte una fecha de la hoja en `Date` sin desfase de zona horaria. */
+const parseDate = (value: string): Date | null => {
+  const dateOnly = value.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!dateOnly) return null;
+
+  const date = new Date(
+    Number(dateOnly[1]),
+    Number(dateOnly[2]) - 1,
+    Number(dateOnly[3]),
+  );
+  return date;
 };
 
-/** Un valor de la hoja existe cuando no es vacío. */
-const hasValue = (value: unknown): boolean =>
-  value !== null && value !== undefined && String(value).trim() !== "";
+/** Fecha con el formato de la card: "01 ago. 2026". */
 
-/** Estado del contrato en texto legible. */
-const formatStatus = (status: string | boolean): string =>
-  typeof status === "boolean" ? (status ? "Activo" : "Inactivo") : status;
+export const formatContractDate = (value: string): string => {
+  const pad = (value: number): string => String(value).padStart(2, "0");
+  const date = parseDate(value);
+  if (!date) return String(value ?? "").trim();
 
-/**
- * Datos del contrato, ya formateados y sin valores vacíos, listos
- * para renderizar en la card de la pestaña Contrato.
- */
-export const getContractRows = (contract: Contract): ContractRow[] =>
-  [
-    {
-      label: "Número de contrato",
-      value: hasValue(contract.id) ? String(contract.id) : "",
-    },
-    { label: "Fecha de inicio", value: formatDate(contract.date_initial) },
-    { label: "Fecha de fin", value: formatDate(contract.date_finish) },
-    {
-      label: "Canon de arrendamiento",
-      value: hasValue(contract.canon) ? formatMoney(contract.canon) : "",
-    },
-    {
-      label: "Depósito",
-      value: hasValue(contract.price) ? formatMoney(contract.price) : "",
-    },
-    {
-      label: "Meses de extensión",
-      value: hasValue(contract.extension_month)
-        ? String(contract.extension_month)
-        : "",
-    },
-    {
-      label: "Extensión",
-      value: hasValue(contract.extension) ? String(contract.extension) : "",
-    },
-    {
-      label: "Cuota de administración",
-      value: hasValue(contract.administration_fee)
-        ? formatMoney(contract.administration_fee)
-        : "",
-    },
-    { label: "Estado", value: formatStatus(contract.status) },
-  ].filter((row) => row.value !== "");
+  return `${pad(date.getDate())} ${MONTHS[date.getMonth()]} ${date.getFullYear()}`;
+};
+
+/** Rango de vigencia: "01 ago. 2026 – 01 feb. 2027". */
+export const getContractDateRange = (contract: Contract): string =>
+  [contract.date_initial, contract.date_finish]
+    .map(formatContractDate)
+    .filter(Boolean)
+    .join(" – ");
+
+/** Monto en pesos sin decimales, como en el diseño ("$ 500.000"). */
+export const formatContractMoney = (value: number): string => {
+  if (!value) return "—";
+
+  if (!Number.isFinite(value)) return "—";
+
+  return value.toLocaleString("es-CO", {
+    style: "currency",
+    currency: "COP",
+    maximumFractionDigits: 0,
+  });
+};

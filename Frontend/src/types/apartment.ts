@@ -34,8 +34,9 @@ export type Contract = {
   date_initial: string;
   date_finish: string;
   canon: number;
-  price: number;
+  deposit: number;
   extension_month: boolean;
+  /** Prórroga automática; la hoja puede devolverla como texto. */
   extension: number;
   administration_fee: number;
   status: boolean;

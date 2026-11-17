@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { LuChevronDown } from "react-icons/lu";
 import { NavLink } from "react-router";
 
 import { useSessionStore, useSessionUser } from "../../../../store/sessionStore";
@@ -61,22 +62,12 @@ const UserMenu = () => {
         <span className="admin-user-alias d-none d-md-block text-truncate">
           {name}
         </span>
-        <svg
+        <LuChevronDown
+          size={14}
+          strokeWidth={2}
           className={open ? "admin-user-caret is-open" : "admin-user-caret"}
-          viewBox="0 0 16 16"
-          width="14"
-          height="14"
           aria-hidden
-        >
-          <path
-            d="M4 6l4 4 4-4"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.75"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        />
       </button>
 
       {open && (
