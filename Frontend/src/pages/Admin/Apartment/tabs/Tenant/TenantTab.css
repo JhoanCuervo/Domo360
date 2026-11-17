@@ -1,9 +1,291 @@
 /* ==========================================================================
-   Pestaña Arrendatario: lista de datos en cuadrícula (display y márgenes
-   con utilidades de Bootstrap; solo se conserva la cuadrícula propia).
+   Pestaña Arrendatario: ficha del arrendatario, identificación, contacto e
+   historial de contratos. La cuadrícula, el espaciado y la tipografía base
+   vienen de utilidades de Bootstrap; aquí solo viven los estilos propios.
    ========================================================================== */
 
-.apartment-tabs-list {
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-  gap: 1rem 1.5rem;
+/* --------------------------------------------------------------------------
+   Ficha del arrendatario
+   -------------------------------------------------------------------------- */
+
+.tenant-profile {
+  border: 1px solid #e6e2f4;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+/* Los dos avatares se solapan: las iniciales quedan detrás del retrato. */
+.tenant-avatar-initials {
+  width: 6rem;
+  height: 6rem;
+  place-items: center;
+  background: linear-gradient(
+    140deg,
+    var(--domo-purple-600),
+    var(--domo-indigo-600)
+  );
+  color: #ffffff;
+  font-size: 2.15rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  box-shadow: 0 6px 16px -8px rgba(76, 29, 149, 0.75);
+}
+
+.tenant-avatar-portrait {
+  width: 5.25rem;
+  height: 5.25rem;
+  margin-left: -1.25rem;
+  border: 3px solid #ffffff;
+  background-color: var(--domo-purple-100);
+  box-shadow: 0 4px 12px -6px rgba(76, 29, 149, 0.5);
+}
+
+.tenant-avatar-portrait svg {
+  width: 100%;
+  height: 100%;
+}
+
+.tenant-status {
+  gap: 0.3rem;
+  padding: 0.3rem 0.75rem 0.3rem 0.4rem;
+  border: 1px solid #bfe9cd;
+  background-color: #e9f9ef;
+  color: #157347;
+  font-size: 0.8125rem;
+  box-shadow: 0 1px 2px rgba(21, 115, 71, 0.08);
+}
+
+.tenant-status-icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  place-items: center;
+  background-color: #22c55e;
+  color: #ffffff;
+}
+
+.tenant-name {
+  color: #17123f;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+
+.tenant-alias {
+  color: var(--domo-purple-600);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+/* Distintivos de rol: el principal resaltado en morado y el secundario neutro. */
+.tenant-role {
+  padding: 0.2rem 0.7rem;
+  background-color: #f1f5f9;
+  color: var(--domo-slate-500);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.tenant-role.is-primary {
+  background-color: var(--domo-purple-100);
+  color: var(--domo-purple-700);
+}
+
+/* Los botones conservan la forma de .btn-domo; aquí solo se compactan. */
+.btn.tenant-action {
+  padding: 0.55rem 0.85rem;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   Cards de identificación, contacto e historial
+   -------------------------------------------------------------------------- */
+
+.tenant-card {
+  padding: 1.25rem 1.5rem 1.5rem;
+  border: 1px solid #e6e2f4;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.tenant-card-header {
+  gap: 0.625rem;
+}
+
+.tenant-card-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border-radius: 0.625rem;
+  background-color: var(--domo-purple-100);
+  color: var(--domo-purple-600);
+}
+
+.tenant-card-title {
+  color: #17123f;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.tenant-card-divider {
+  margin: 0.875rem 0 1rem;
+  border: 0;
+  border-top: 1px solid #ece9f7;
+  opacity: 1;
+}
+
+.tenant-field-label {
+  gap: 0.35rem;
+  color: var(--domo-slate-500);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.tenant-field-label svg {
+  color: var(--domo-purple-500);
+}
+
+.tenant-field-value {
+  color: #17123f;
+  font-size: 0.95rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.tenant-contact-list {
+  gap: 0.875rem;
+}
+
+.tenant-contact-row {
+  gap: 0.625rem;
+}
+
+.tenant-contact-icon {
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 0.5rem;
+  background-color: #f3efff;
+  color: var(--domo-purple-600);
+}
+
+.tenant-contact-copy {
+  min-width: 0;
+}
+
+.tenant-contact-label {
+  color: var(--domo-slate-500);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.tenant-contact-value {
+  color: #17123f;
+  font-size: 0.875rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.btn.tenant-whatsapp {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--domo-slate-200);
+  background-color: #ffffff;
+  color: var(--domo-slate-700);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.btn.tenant-whatsapp svg {
+  flex-shrink: 0;
+  color: var(--domo-purple-600);
+}
+
+.btn.tenant-whatsapp:hover,
+.btn.tenant-whatsapp:focus-visible,
+.btn.tenant-whatsapp:active {
+  border-color: var(--domo-slate-300);
+  background-color: var(--domo-slate-50);
+  color: var(--domo-slate-900);
+}
+
+/* --------------------------------------------------------------------------
+   Historial de contratos
+   -------------------------------------------------------------------------- */
+
+.tenant-contract-list {
+  gap: 0.875rem;
+}
+
+.tenant-contract-row {
+  gap: 0.625rem;
+}
+
+.tenant-contract-icon {
+  color: var(--domo-purple-600);
+}
+
+.tenant-contract-title {
+  color: #17123f;
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.tenant-contract-state {
+  color: var(--domo-slate-500);
+  font-size: 0.8125rem;
+}
+
+.btn.tenant-ghost-button {
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--domo-slate-200);
+  background-color: #ffffff;
+  color: var(--domo-slate-700);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.btn.tenant-ghost-button:hover,
+.btn.tenant-ghost-button:focus-visible,
+.btn.tenant-ghost-button:active {
+  border-color: var(--domo-slate-300);
+  background-color: var(--domo-slate-50);
+  color: var(--domo-slate-900);
+}
+
+/* --------------------------------------------------------------------------
+   Ajustes en móvil
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 575.98px) {
+  .tenant-avatar-initials {
+    width: 5rem;
+    height: 5rem;
+    font-size: 1.95rem;
+  }
+
+  .tenant-avatar-portrait {
+    width: 4.25rem;
+    height: 4.25rem;
+    margin-left: -1.25rem;
+  }
+
+  .tenant-name {
+    font-size: 1.5rem;
+  }
+
+  .tenant-actions {
+    flex-wrap: nowrap;
+  }
+
+  .tenant-action {
+    flex: 1 1 auto;
+  }
+
+  .tenant-card {
+    padding: 1.25rem;
+  }
 }

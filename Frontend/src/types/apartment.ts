@@ -25,7 +25,7 @@ export type AllApartments = Apartment[];
  * Respuesta de la acción `Apartment`: el inmueble junto con su
  * arrendatario y su contrato.
  */
-export type Tenant = Omit<User, "alias" | "rol">;
+export type Tenant = User;
 
 /** Registro de la tabla Contracts en Google Sheets. */
 export type Contract = {
@@ -36,7 +36,6 @@ export type Contract = {
   canon: number;
   deposit: number;
   extension_month: boolean;
-  /** Prórroga automática; la hoja puede devolverla como texto. */
   extension: number;
   administration_fee: number;
   status: boolean;

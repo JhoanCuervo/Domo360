@@ -8,7 +8,7 @@ import TenantTab from "./Tenant/TenantTab";
 
 /** Menú de pestañas con los datos del arrendatario y del contrato. */
 const ApartmentTabs = ({ detail }: { detail: ApartmentDetail }) => {
-  const { tenant, contract } = detail;
+  const { contract, tenant } = detail;
   const [activeTab, setActiveTab] = useState<TabKey>("tenant");
 
   return (

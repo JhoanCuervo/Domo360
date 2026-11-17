@@ -1,4 +1,4 @@
-import Users from "../../model/Users";
+import Users from "../model/Users";
 
 export const Auth = ({ idAuth }: { idAuth: number }) => {
   const user = Users()._find(idAuth);

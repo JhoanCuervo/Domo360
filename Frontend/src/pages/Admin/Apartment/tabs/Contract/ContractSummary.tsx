@@ -92,7 +92,6 @@ const InfoCard = ({ icon, title, rows }: InfoCardProps) => (
  * canon/depósito y las cards de vigencia y condiciones.
  */
 const ContractSummary = ({ contract }: { contract: Contract }) => {
-  console.log("🚀 ~ ContractSummary ~ contract:", contract);
   const dateRange = getContractDateRange(contract);
 
   return (

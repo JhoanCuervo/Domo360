@@ -5,5 +5,5 @@ export type User = {
   alias: string;
   rol: string;
   email: string;
-  phone: string;
+  phone: number;
 };

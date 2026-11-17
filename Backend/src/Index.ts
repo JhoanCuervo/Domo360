@@ -2,7 +2,7 @@
 import doGet from "./model/doGet";
 global.doGet = doGet;
 
-import { Auth } from "./controller/Admin/Auth";
+import { Auth } from "./controller/Auth";
 global.Auth = Auth;
 
 import { Home } from "./controller/Admin/Home";
