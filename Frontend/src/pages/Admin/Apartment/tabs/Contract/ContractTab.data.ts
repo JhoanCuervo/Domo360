@@ -1,4 +1,5 @@
 import type { Contract } from "../../../../../types/apartment";
+import { formatCurrency } from "../../../../../utils/format";
 
 /** Meses abreviados usados en las fechas del contrato. */
 const MONTHS = [
@@ -47,14 +48,5 @@ export const getContractDateRange = (contract: Contract): string =>
     .join(" – ");
 
 /** Monto en pesos sin decimales, como en el diseño ("$ 500.000"). */
-export const formatContractMoney = (value: number): string => {
-  if (!value) return "—";
-
-  if (!Number.isFinite(value)) return "—";
-
-  return value.toLocaleString("es-CO", {
-    style: "currency",
-    currency: "COP",
-    maximumFractionDigits: 0,
-  });
-};
+export const formatContractMoney = (value: number): string =>
+  value ? formatCurrency(value) : "—";

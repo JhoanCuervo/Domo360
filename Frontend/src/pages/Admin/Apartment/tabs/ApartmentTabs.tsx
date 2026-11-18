@@ -1,15 +1,37 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
-import type { ApartmentDetail } from "../../../../types/apartment";
+import type {
+  Apartment,
+  ApartmentDetail,
+  ApartmentServices,
+} from "../../../../types/apartment";
 import { TABS } from "./ApartmentTabs.data";
 import type { TabKey } from "./ApartmentTabs.types";
 import ContractTab from "./Contract/ContractTab";
+import ServicesTab from "./Services/ServicesTab";
 import TenantTab from "./Tenant/TenantTab";
+
+const parseServices = (apartment: Apartment): ApartmentServices | null => {
+  try {
+    const { services } = apartment;
+    const servicesJson = JSON.parse(services);
+    return servicesJson;
+  } catch {
+    return null;
+  }
+};
 
 /** Menú de pestañas con los datos del arrendatario y del contrato. */
 const ApartmentTabs = ({ detail }: { detail: ApartmentDetail }) => {
-  const { contract, tenant } = detail;
+  const { contract, tenant, apartment } = detail;
   const [activeTab, setActiveTab] = useState<TabKey>("tenant");
+
+  const services = parseServices(apartment);
+  const panels: Record<TabKey, ReactNode> = {
+    tenant: <TenantTab tenant={tenant} />,
+    contract: <ContractTab contract={contract} />,
+    services: <ServicesTab services={services} />,
+  };
 
   return (
     <section className="apartment-tabs border rounded-4 bg-white overflow-hidden">
@@ -43,11 +65,7 @@ const ApartmentTabs = ({ detail }: { detail: ApartmentDetail }) => {
         id={`apartment-panel-${activeTab}`}
         aria-labelledby={`apartment-tab-${activeTab}`}
       >
-        {activeTab === "tenant" ? (
-          <TenantTab tenant={tenant} />
-        ) : (
-          <ContractTab contract={contract} />
-        )}
+        {panels[activeTab]}
       </div>
     </section>
   );

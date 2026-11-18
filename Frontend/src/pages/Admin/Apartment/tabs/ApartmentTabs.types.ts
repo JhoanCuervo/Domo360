@@ -1,1 +1,1 @@
-export type TabKey = "tenant" | "contract";
+export type TabKey = "tenant" | "contract" | "services";

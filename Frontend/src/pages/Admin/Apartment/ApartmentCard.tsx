@@ -13,6 +13,7 @@ import {
 } from "react-icons/lu";
 
 import type { ApartmentDetail } from "../../../types/apartment";
+import { formatCurrency } from "../../../utils/format";
 import { getImageUrl, isRented } from "../Home/Home.helpers";
 
 /** La hoja puede devolver valores vacíos; solo se muestran si tienen contenido. */
@@ -26,15 +27,7 @@ export const formatMoney = (value: number | string): string => {
       ? value
       : Number(String(value).replace(/[^\d.-]/g, ""));
 
-  if (Number.isFinite(amount)) {
-    return amount.toLocaleString("es-CO", {
-      style: "currency",
-      currency: "COP",
-      maximumFractionDigits: 2,
-    });
-  }
-
-  return String(value);
+  return formatCurrency(amount, { decimals: 2, fallback: String(value) });
 };
 
 /** Formatea una fecha de la hoja; si no es válida, la muestra tal cual. */
@@ -57,28 +50,39 @@ export const formatDate = (value: string): string => {
  * del apartamento al centro y a la derecha los datos económicos del
  * contrato (canon, depósito y fechas de pago).
  */
+
 const ApartmentCard = ({ detail }: { detail: ApartmentDetail }) => {
   const { apartment, contract } = detail;
+
   const [imageFailed, setImageFailed] = useState(false);
   const rented = isRented(apartment.status);
 
   const features = [
     hasValue(apartment.bedrooms) && (
-      <li key="bedrooms" className="apartment-card-badge d-inline-flex align-items-center gap-2 rounded-pill">
+      <li
+        key="bedrooms"
+        className="apartment-card-badge d-inline-flex align-items-center gap-2 rounded-pill"
+      >
         <LuBedDouble size={16} strokeWidth={2} aria-hidden />
         {apartment.bedrooms}{" "}
         {Number(apartment.bedrooms) === 1 ? "Habitación" : "Habitaciones"}
       </li>
     ),
     hasValue(apartment.bathrooms) && (
-      <li key="bathrooms" className="apartment-card-badge d-inline-flex align-items-center gap-2 rounded-pill">
+      <li
+        key="bathrooms"
+        className="apartment-card-badge d-inline-flex align-items-center gap-2 rounded-pill"
+      >
         <LuBath size={16} strokeWidth={2} aria-hidden />
         {apartment.bathrooms}{" "}
         {Number(apartment.bathrooms) === 1 ? "Baño" : "Baños"}
       </li>
     ),
     hasValue(apartment.area) && (
-      <li key="area" className="apartment-card-badge d-inline-flex align-items-center gap-2 rounded-pill">
+      <li
+        key="area"
+        className="apartment-card-badge d-inline-flex align-items-center gap-2 rounded-pill"
+      >
         <LuRuler size={16} strokeWidth={2} aria-hidden />
         {apartment.area} m²
       </li>
@@ -99,13 +103,13 @@ const ApartmentCard = ({ detail }: { detail: ApartmentDetail }) => {
         <dd>{formatMoney(contract.canon)}</dd>
       </div>
     ),
-    hasValue(contract.price) && (
+    hasValue(contract.deposit) && (
       <div key="deposit" className="apartment-card-side-row d-grid">
         <dt className="d-flex align-items-center">
           <LuWallet size={12} strokeWidth={2} aria-hidden />
           Depósito
         </dt>
-        <dd>{formatMoney(contract.price)}</dd>
+        <dd>{formatMoney(contract.deposit)}</dd>
       </div>
     ),
     paymentDates.length > 0 && (

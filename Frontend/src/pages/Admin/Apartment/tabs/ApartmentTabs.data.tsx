@@ -12,4 +12,9 @@ export const TABS: { key: TabKey; title: string; icon: React.ReactNode }[] = [
     title: "Contrato",
     icon: <LuFileText size={16} strokeWidth={2} aria-hidden />,
   },
+  {
+    key: "services",
+    title: "Servicios",
+    icon: <LuFileText size={16} strokeWidth={2} aria-hidden />,
+  },
 ];

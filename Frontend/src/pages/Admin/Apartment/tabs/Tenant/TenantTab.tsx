@@ -13,7 +13,6 @@ const getInitials = (name: string): string =>
     .join("");
 
 const TenantTab = ({ tenant }: { tenant: Tenant }) => {
-  console.log("🚀 ~ TenantTab ~ tenant:", tenant);
   const initials = getInitials(tenant.name);
 
   return (

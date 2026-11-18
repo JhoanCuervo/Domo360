@@ -1,4 +1,19 @@
+import type { IconType } from "react-icons";
 import type { User } from "./user";
+/** Cuenta de un servicio del inmueble tal como se guarda en `services`. */
+export type ServiceDetail = {
+  company?: string;
+  accountNumber?: number;
+  pageCompany?: string;
+  status: boolean;
+};
+
+/**
+ * Servicios del inmueble indexados por clave (`energia`, `gas`, `aseo`…).
+ * La clave es libre: cualquier servicio nuevo que llegue desde la base se
+ * dibuja con su icono o con el icono genérico.
+ */
+export type ApartmentServices = Record<string, ServiceDetail>;
 
 export type Apartment = {
   id: string;
@@ -18,6 +33,7 @@ export type Apartment = {
   has_laundry_room: boolean;
   user_id: number;
   contract_id: string;
+  services: string;
 };
 export type AllApartments = Apartment[];
 
@@ -43,7 +59,14 @@ export type Contract = {
 };
 
 export type ApartmentDetail = {
-  apartment: Omit<Apartment, "user_id" | "contract_id">;
+  // apartment: Omit<Apartment, "user_id" | "contract_id">;
+  apartment: Apartment;
   tenant: Tenant;
   contract: Contract;
+};
+
+export type ServicePreset = {
+  label: string;
+  description: string;
+  icon: IconType;
 };

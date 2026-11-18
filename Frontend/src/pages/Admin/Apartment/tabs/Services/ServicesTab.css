@@ -1,0 +1,226 @@
+/* ==========================================================================
+   Pestaña Servicios: cards con la empresa, la cuenta y el acceso al pago en
+   línea. La cuadrícula, el espaciado y la tipografía base vienen de
+   utilidades de Bootstrap; aquí solo viven los estilos propios.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Cards de servicio: todas comparten el morado de la marca como acento
+   -------------------------------------------------------------------------- */
+
+.services-card {
+  --service-accent: var(--domo-purple-600);
+  --service-accent-strong: var(--domo-purple-700);
+  --service-accent-soft: var(--domo-purple-100);
+  --service-accent-faint: var(--domo-purple-50);
+  --service-gradient: linear-gradient(
+    135deg,
+    var(--domo-purple-500),
+    var(--domo-purple-700)
+  );
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 1.25rem;
+  border: 1px solid #edeaf8;
+  background-color: #ffffff;
+  box-shadow:
+    0 12px 28px -22px rgba(15, 23, 42, 0.55),
+    0 1px 3px rgba(15, 23, 42, 0.05);
+}
+
+/* Mancha de color del encabezado: dos círculos recortados por el borde de
+   la card, igual que en el diseño de referencia. */
+.services-card::before,
+.services-card::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.services-card::before {
+  top: -9.5rem;
+  right: -6.5rem;
+  width: 22rem;
+  height: 19rem;
+  background-color: var(--service-accent-soft);
+  opacity: 0.9;
+}
+
+.services-card::after {
+  top: -11rem;
+  right: -12rem;
+  width: 27rem;
+  height: 24rem;
+  background-color: var(--service-accent-faint);
+  opacity: 0.65;
+}
+
+/* El contenido queda por encima de las manchas. */
+.services-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.services-card-icon {
+  width: 3.25rem;
+  height: 3.25rem;
+  place-items: center;
+  border-radius: 1rem;
+  background-color: var(--service-accent-soft);
+  color: var(--service-accent);
+}
+
+.services-card-chip {
+  padding: 0.3rem 0.75rem;
+  background-color: var(--service-accent-soft);
+  color: var(--service-accent-strong);
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.services-card-company {
+  color: #17123f;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.services-card-description {
+  color: var(--domo-slate-500);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.services-card-divider {
+  margin: 0.875rem 0 1rem;
+  border: 0;
+  border-top: 1px solid #ececf5;
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Número de cuenta
+   -------------------------------------------------------------------------- */
+
+.services-card-account {
+  margin-top: 0.25rem;
+}
+
+.services-card-label {
+  gap: 0.35rem;
+  color: var(--domo-slate-500);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.services-card-label svg {
+  flex-shrink: 0;
+  color: var(--domo-purple-600);
+}
+
+.services-card-value {
+  margin-top: 0.3rem;
+  color: #17123f;
+  font-size: 1.375rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+
+/* --------------------------------------------------------------------------
+   Acciones: pago en línea y copiado
+   -------------------------------------------------------------------------- */
+
+.services-card-actions {
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.btn.services-pay {
+  width: 100%;
+  min-height: 2.875rem;
+  padding: 0.6rem 1rem;
+  border-radius: 0.75rem;
+  background-image: var(--service-gradient);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: 0 10px 18px -14px var(--service-accent-strong);
+  transition: filter 0.15s ease;
+}
+
+/* Bootstrap no define las variables de hover de un .btn sin variante, así
+   que se repiten color y fondo para que el estado hover no los herede. */
+.btn.services-pay:hover,
+.btn.services-pay:focus-visible {
+  background-image: var(--service-gradient);
+  color: #ffffff;
+  filter: brightness(0.94);
+}
+
+.btn.services-pay:focus-visible {
+  outline: 2px solid var(--service-accent);
+  outline-offset: 2px;
+}
+
+.btn.services-copy {
+  padding: 0.25rem 0.5rem;
+  border: 0;
+  background-color: transparent;
+  color: var(--domo-slate-700);
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: color 0.15s ease;
+}
+
+.btn.services-copy:hover,
+.btn.services-copy:focus-visible {
+  background-color: transparent;
+  color: var(--domo-purple-700);
+}
+
+.btn.services-copy:focus-visible {
+  border-radius: 0.5rem;
+  outline: 2px solid var(--domo-purple-600);
+  outline-offset: 2px;
+}
+
+.btn.services-copy.is-copied {
+  color: #157347;
+}
+
+/* --------------------------------------------------------------------------
+   Ajustes en móvil
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 575.98px) {
+  .services-card {
+    padding: 1.125rem;
+  }
+
+  .services-card-icon {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .services-card-company {
+    font-size: 1.35rem;
+  }
+
+  .services-card-value {
+    font-size: 1.25rem;
+  }
+}
