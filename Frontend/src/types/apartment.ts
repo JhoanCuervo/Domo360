@@ -17,7 +17,7 @@ export type ApartmentServices = Record<string, ServiceDetail>;
 
 export type Apartment = {
   id: string;
-  torre: string;
+  tower: string;
   number: string;
   address: string;
   city: string;
@@ -34,6 +34,7 @@ export type Apartment = {
   user_id: number;
   contract_id: string;
   services: string;
+  fileTower: string;
 };
 export type AllApartments = Apartment[];
 

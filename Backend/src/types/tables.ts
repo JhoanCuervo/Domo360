@@ -29,7 +29,7 @@ export type Contract = {
   extension: number | string | boolean;
   administration_fee: number | string;
   status: string | boolean;
-  apartament_id: string;
+  apartment_id: string;
 };
 
 export type User = {

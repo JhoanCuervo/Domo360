@@ -1,0 +1,79 @@
+.user-home-page {
+  background-color: var(--domo-slate-50);
+}
+
+.user-home-hero {
+  min-height: clamp(340px, 52vw, 440px);
+  background-color: var(--domo-purple-900);
+}
+
+.user-home-hero-img {
+  object-position: center 45%;
+}
+
+.user-home-hero-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(76, 29, 149, 0.72) 0%,
+    rgba(76, 29, 149, 0.22) 45%,
+    rgba(15, 23, 42, 0.84) 100%
+  );
+}
+
+.user-home-brand-title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  letter-spacing: -0.02em;
+}
+
+.user-home-greeting {
+  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+}
+
+.user-home-apt-pill {
+  background-color: rgba(15, 23, 42, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  font-size: 0.85rem;
+}
+
+.user-home-sheet {
+  position: relative;
+  margin-top: -1.75rem;
+  border-top-left-radius: 1.75rem;
+  border-top-right-radius: 1.75rem;
+}
+
+.user-home-action {
+  border-radius: 1rem;
+  transition: background-color 0.18s ease, transform 0.18s ease;
+}
+
+.user-home-action:hover {
+  background-color: var(--domo-purple-50);
+  transform: translateY(-2px);
+}
+
+.user-home-action-icon {
+  width: 56px;
+  height: 56px;
+  background-color: var(--domo-purple-100);
+  color: var(--domo-purple-600);
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.user-home-action:hover .user-home-action-icon {
+  background-color: var(--domo-purple-200);
+  color: var(--domo-purple-700);
+}
+
+.user-home-action-label {
+  font-size: 0.875rem;
+  color: var(--domo-slate-900);
+}
+
+@media (min-width: 768px) {
+  .user-home-sheet {
+    margin-top: -2.25rem;
+    border-radius: 1.5rem;
+  }
+}

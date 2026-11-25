@@ -4,7 +4,7 @@ import Admin from "../../layouts/Admin/Admin";
 import ApartmentPage from "../../pages/Admin/Apartment/Index";
 import AdminPage from "../../pages/Admin/Home/Index";
 import Login from "../../pages/Login/Index";
-import User from "../../pages/User/Index";
+import User from "../../pages/User/Home/Index";
 
 const Routes: RouteObject[] = [
   { path: "/", element: <Login /> },

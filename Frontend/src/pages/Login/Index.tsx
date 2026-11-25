@@ -21,6 +21,7 @@ const formatCedula = (digits: string) =>
 const Login = () => {
   const navigate = useNavigate();
   const setUser = useSessionStore((state) => state.setUser);
+  const setApartment = useSessionStore((state) => state.setApartment);
   const [digits, setDigits] = useState("");
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -54,9 +55,10 @@ const Login = () => {
       setSubmitting(false);
       return;
     }
-
-    const userSave = { id: parseInt(digits), ...user };
+    const { apartment, ...dataUser } = user;
+    const userSave = { id: parseInt(digits), ...dataUser };
     setUser(userSave);
+    setApartment(apartment ? apartment : null);
 
     setSubmitting(false);
 
