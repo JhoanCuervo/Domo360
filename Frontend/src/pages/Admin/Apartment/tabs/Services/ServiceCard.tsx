@@ -5,20 +5,10 @@ import {
   LuCreditCard,
   LuExternalLink,
   LuHash,
-  LuPlugZap,
 } from "react-icons/lu";
-import type {
-  ServiceDetail,
-  ServicePreset,
-} from "../../../../../types/apartment";
-import { formatNumber } from "../../../../../utils/format";
 
-/**
- * Servicio ya resuelto por la pestaña: los datos guardados en la base más el
- * preset visual (etiqueta, descripción e icono). El color es siempre el
- * morado de la marca, independiente del servicio.
- */
-type ServiceCardData = ServiceDetail & ServicePreset;
+import type { Service } from "../../../../../data/services";
+import { formatNumber } from "../../../../../utils/format";
 
 /** Copia al portapapeles con respaldo para navegadores sin Clipboard API. */
 const copyToClipboard = async (value: string): Promise<boolean> => {
@@ -39,9 +29,9 @@ const copyToClipboard = async (value: string): Promise<boolean> => {
     return copied;
   }
 };
-const ServiceCard = ({ service }: { service: ServiceCardData }) => {
+const ServiceCard = ({ service }: { service: Service }) => {
   const [copied, setCopied] = useState(false);
-  const Icon = service.icon ?? LuPlugZap;
+  const Icon = service.icon;
   const accountNumber = service.accountNumber;
 
   const handleCopy = async () => {

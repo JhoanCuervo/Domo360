@@ -1,6 +1,7 @@
 import type { RouteObject } from "react-router";
 
 import Admin from "../../layouts/Admin/Admin";
+import UserLayout from "../../layouts/User/UserLayout";
 import ApartmentPage from "../../pages/Admin/Apartment/Index";
 import AdminPage from "../../pages/Admin/Home/Index";
 import Login from "../../pages/Login/Index";
@@ -28,8 +29,22 @@ const Routes: RouteObject[] = [
     ),
   },
   { path: "/user", element: <User /> },
-  { path: "/user/receipts/upload", element: <UploadReceipt /> },
-  { path: "/user/receipts/view", element: <ViewReceipts /> },
+  {
+    path: "/user/receipts/upload",
+    element: (
+      <UserLayout>
+        <UploadReceipt />
+      </UserLayout>
+    ),
+  },
+  {
+    path: "/user/receipts/view",
+    element: (
+      <UserLayout>
+        <ViewReceipts />
+      </UserLayout>
+    ),
+  },
 ];
 
 export default Routes;

@@ -1,0 +1,105 @@
+/* ==========================================================================
+   Subida de recibos: encabezado de la pantalla.
+   El layout, el espaciado y la tarjeta del formulario vienen de utilidades
+   de Bootstrap; aquí solo el bloque del título y su icono.
+   ========================================================================== */
+
+.upload-receipt-header-icon {
+  width: 3.25rem;
+  height: 3.25rem;
+  place-items: center;
+  background-color: var(--domo-purple-50);
+  color: var(--domo-purple-600);
+}
+
+.upload-receipt-title {
+  color: #04084b;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.upload-receipt-subtitle {
+  margin-top: 0.125rem;
+  color: var(--domo-slate-500);
+  font-size: 0.875rem;
+}
+
+/* --------------------------------------------------------------------------
+   Selector de servicio: cuatro opciones en una cuadrícula de dos columnas.
+   -------------------------------------------------------------------------- */
+.service-picker-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.service-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--domo-slate-200);
+  border-radius: var(--domo-radius);
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.service-option:hover {
+  border-color: var(--domo-purple-200);
+  background-color: var(--domo-purple-50);
+}
+
+/* El radio real está visualmente oculto; el foco se dibuja en toda la opción. */
+.service-option:focus-within {
+  outline: 2px solid var(--domo-indigo-600);
+  outline-offset: 2px;
+}
+
+.service-option.is-selected {
+  border-color: var(--domo-purple-500);
+  background-color: var(--domo-purple-50);
+  box-shadow: 0 0 0 1px var(--domo-purple-500);
+}
+
+.service-option-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: var(--domo-purple-100);
+  color: var(--domo-purple-600);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.service-option.is-selected .service-option-icon {
+  background-color: var(--domo-purple-600);
+  color: #ffffff;
+}
+
+.service-option-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--domo-slate-700);
+}
+
+.service-option.is-selected .service-option-label {
+  color: var(--domo-purple-700);
+}
+
+@media (max-width: 575.98px) {
+  .upload-receipt-title {
+    font-size: 1.375rem;
+  }
+
+  .upload-receipt-header-icon {
+    width: 2.875rem;
+    height: 2.875rem;
+  }
+}

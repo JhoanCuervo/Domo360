@@ -1,0 +1,7 @@
+/* ==========================================================================
+   Layout del arrendatario (ventanas fuera de la botonera de inicio).
+   La estructura y el espaciado vienen de utilidades de Bootstrap.
+   ========================================================================== */
+.user-layout-page {
+  background-color: var(--domo-slate-50);
+}

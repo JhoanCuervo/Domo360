@@ -1,32 +1,20 @@
 import { useState, type ReactNode } from "react";
 
-import type {
-  Apartment,
-  ApartmentDetail,
-  ApartmentServices,
-} from "../../../../types/apartment";
+import { getServices } from "../../../../data/services";
+import type { ApartmentDetail } from "../../../../types/apartment";
 import { TABS } from "./ApartmentTabs.data";
 import type { TabKey } from "./ApartmentTabs.types";
 import ContractTab from "./Contract/ContractTab";
 import ServicesTab from "./Services/ServicesTab";
 import TenantTab from "./Tenant/TenantTab";
 
-const parseServices = (apartment: Apartment): ApartmentServices | null => {
-  try {
-    const { services } = apartment;
-    const servicesJson = JSON.parse(services);
-    return servicesJson;
-  } catch {
-    return null;
-  }
-};
-
 /** Menú de pestañas con los datos del arrendatario y del contrato. */
 const ApartmentTabs = ({ detail }: { detail: ApartmentDetail }) => {
   const { contract, tenant, apartment } = detail;
   const [activeTab, setActiveTab] = useState<TabKey>("tenant");
 
-  const services = parseServices(apartment);
+  // const services = parseServices(apartment);
+  const services = getServices(apartment.services);
   const panels: Record<TabKey, ReactNode> = {
     tenant: <TenantTab tenant={tenant} />,
     contract: <ContractTab contract={contract} />,

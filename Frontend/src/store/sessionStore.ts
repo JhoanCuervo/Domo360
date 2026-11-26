@@ -29,9 +29,7 @@ export const useSessionStore = create<SessionStore>()((set) => ({
     clearSession();
     set({ user: null });
   },
-  setApartment: (apartment) => {
-    set({ apartment });
-  },
+  setApartment: (apartment) => set({ apartment }),
 }));
 
 /** Usuario actual, reactivo. */

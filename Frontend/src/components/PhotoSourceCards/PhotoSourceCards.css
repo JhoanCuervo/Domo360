@@ -1,0 +1,88 @@
+/* ==========================================================================
+   Selector de foto (PhotoSourceCards.tsx): dos tarjetas contiguas, una para
+   subir desde la galería y otra para tomar la foto con la cámara.
+   La forma, el borde y el espaciado general vienen de utilidades de
+   Bootstrap en el componente; aquí queda el efecto de tarjetas pegadas.
+   ========================================================================== */
+
+.photo-source-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  overflow: hidden;
+  border: 1px solid var(--domo-slate-200);
+  border-radius: var(--domo-radius);
+  background-color: #ffffff;
+}
+
+.photo-source-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 1.25rem 0.75rem;
+  margin: 0;
+  background-color: #ffffff;
+  color: var(--domo-slate-900);
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+/* La segunda tarjeta comparte el borde con la primera: sin separación. */
+.photo-source-card + .photo-source-card {
+  border-left: 1px solid var(--domo-slate-200);
+}
+
+.photo-source-card:hover {
+  background-color: var(--domo-purple-50);
+}
+
+/* El input real está visualmente oculto dentro de la etiqueta; el foco se
+   dibuja alrededor de toda la tarjeta para que el teclado la ubique. */
+.photo-source-card:focus-within {
+  outline: 2px solid var(--domo-indigo-600);
+  outline-offset: -2px;
+}
+
+.photo-source-card.is-disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.photo-source-card.is-disabled:hover {
+  background-color: #ffffff;
+}
+
+.photo-source-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--domo-purple-100);
+  color: var(--domo-purple-600);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.photo-source-card:hover .photo-source-card-icon {
+  background-color: var(--domo-purple-200);
+  color: var(--domo-purple-700);
+}
+
+.photo-source-card-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.photo-source-card-hint {
+  font-size: 0.75rem;
+  color: var(--domo-slate-500);
+}
+
+.photo-source-preview-img {
+  height: clamp(10rem, 42vw, 14rem);
+  background-color: #f1f5f9;
+}
